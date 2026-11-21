@@ -20,6 +20,7 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 | Archivo | Para qué sirve |
 |---|---|
 | `Version1.py` | Versión 1 cruda, tal como la entregó la IA. No se modifica |
+| `ORIGEN_V1.md` | Cómo se generó la versión 1 con Gemini, con el link a la conversación |
 | `Evaluar_V1.py` | Evaluador generado junto con la versión 1. Corre las conversaciones de prueba contra el modelo |
 | `conversaciones_prueba.json` | 50 conversaciones de prueba con la intención y los datos esperados. 15 son "trampas" para ver si el bot inventa cosas |
 | `resultados_v1.json` | Lo que respondió la versión 1 en cada conversación |
