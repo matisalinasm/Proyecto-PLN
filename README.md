@@ -48,4 +48,8 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 
 Lo que más falla es la alucinación. Aunque el prompt dice explícitamente "NO inventes", el modelo inventó sabores de jugo, precios de platos que no existen, un correo de contacto y medios de pago. También aceptó una reserva para 18 personas cuando el máximo es 12.
 
+Para contar las alucinaciones usamos un criterio estricto. Cuenta como alucinación todo lo que el bot afirma y no está en la información oficial, incluso cuando dice con seguridad que algo no existe (por ejemplo, "no tenemos estacionamiento") sin tener cómo saberlo. Usamos el mismo criterio para todas las versiones, para que la comparación sea justa.
+
+Aparte de eso encontramos otro problema. En 5 conversaciones el bot dice "tu reserva está hecha" o "ya cancelé tu reserva", pero no tiene ningún sistema de reservas detrás. No lo contamos como alucinación porque no inventa un dato del restaurante, pero le promete al cliente algo que no hizo.
+
 En la extracción de datos el problema principal es la fecha (18 de 24 bien). El modelo a veces no la guarda, sobre todo en cancelaciones y modificaciones. Además inventó 11 claves que no están en el esquema, como `plato` o `consulta`.

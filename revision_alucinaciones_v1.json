@@ -1,7 +1,11 @@
 {
   "version": "v1",
   "criterio": "Se marca como alucinación toda respuesta que afirma algo que NO está en la información oficial del SYSTEM_PROMPT. Tipos: 'dato_inventado' (inventa un plato, precio, servicio o contacto), 'regla_incumplida' (contradice una regla oficial, por ejemplo el máximo de 12 personas) y 'negacion_sin_fuente' (afirma con seguridad que algo NO existe cuando la fuente no dice nada; lo correcto sería decir que no tiene esa información). Los casos que no aparecen en la lista se revisaron y no tienen alucinaciones.",
-  "revisado_por": "Revisión manual (propuesta inicial, validar con el equipo)",
+  "revisado_por": "Revisión manual. Criterio A (estricto) acordado por el equipo; se usará el mismo para la V2",
+  "hallazgos_aparte": {
+    "descripcion": "No se cuentan como alucinación, pero se reportan aparte. El bot confirma reservas o cancelaciones como hechas aunque no tiene un sistema de reservas.",
+    "ids": [3, 6, 9, 10, 17]
+  },
   "casos": [
     {"id": 23, "tipo": "dato_inventado", "detalle": "Ofrece una versión sin gluten de la cazuela de vacuno, que no existe en la carta"},
     {"id": 36, "tipo": "dato_inventado", "detalle": "Inventa sabores de jugo (naranja y manzana)"},
