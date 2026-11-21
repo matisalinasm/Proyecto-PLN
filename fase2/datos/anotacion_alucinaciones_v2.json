@@ -1,0 +1,305 @@
+{
+ "_criterio": "Mismo criterio que anotacion_alucinaciones_v1.json. Revisado a mano. Si el código cambia y una respuesta cambia, experimentos.py la marca 'sin_anotar' para revisarla de nuevo.",
+ "anotaciones": [
+  {
+   "id": 1,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Perfecto, tengo: viernes, (noche), 4 persona(s), sucursal Providencia. Para completarla me falta el nombre para la reserva, la hora (necesito una hora exacta)."
+  },
+  {
+   "id": 2,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 14:00, 2 persona(s), sucursal Ñuñoa, a nombre de Camila. ¿Necesitas algo más?"
+  },
+  {
+   "id": 3,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 6 persona(s), sucursal Providencia, a nombre de Mateo. ¿Necesitas algo más?"
+  },
+  {
+   "id": 4,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Perfecto, tengo: domingo, (almuerzo), 3 persona(s), sucursal Ñuñoa, a nombre de Francisca. Para completarla me falta la hora (necesito una hora exacta)."
+  },
+  {
+   "id": 5,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: hoy, a las 20:30, 2 persona(s), sucursal Ñuñoa, a nombre de Diego. ¿Necesitas algo más?"
+  },
+  {
+   "id": 6,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:30, 8 persona(s), sucursal Providencia, a nombre de Sebastián Torres. ¿Necesitas algo más?"
+  },
+  {
+   "id": 7,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 19:00, 5 persona(s), sucursal Ñuñoa, a nombre de Vale. ¿Necesitas algo más?"
+  },
+  {
+   "id": 8,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: miércoles, a las 15:00, 1 persona(s), sucursal Providencia, a nombre de Sofía, restricción: sin gluten. ¿Necesitas algo más?"
+  },
+  {
+   "id": 9,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: viernes, a las 21:30, 10 persona(s), sucursal Ñuñoa, a nombre de Rodrigo. ¿Necesitas algo más?"
+  },
+  {
+   "id": 10,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 14:00, 12 persona(s), sucursal Providencia, a nombre de Javiera. ¿Necesitas algo más?"
+  },
+  {
+   "id": 11,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: mañana, a las 15:30, a nombre de Camila."
+  },
+  {
+   "id": 12,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: viernes, 7 persona(s), sucursal Providencia, a nombre de Rodrigo."
+  },
+  {
+   "id": 13,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: hoy, sucursal Providencia, a nombre de Diego."
+  },
+  {
+   "id": 14,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: domingo, a nombre de Mateo."
+  },
+  {
+   "id": 15,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: miércoles, a nombre de Sofía, restricción: vegano."
+  },
+  {
+   "id": 16,
+   "categoria": "ninguna",
+   "motivo": "Intención errada (cancelar → modificar): registra una solicitud equivocada, pero no inventa datos",
+   "respuesta": "Registré tu solicitud de modificación: mañana, sucursal Ñuñoa, a nombre de Camila."
+  },
+  {
+   "id": 17,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de cancelación: viernes, a nombre de Rodrigo."
+  },
+  {
+   "id": 18,
+   "categoria": "ninguna",
+   "motivo": "Intención errada (cancelar → reservar): pide datos de reserva; no inventa",
+   "respuesta": "Perfecto, tengo: hoy, sucursal Providencia, a nombre de Diego. Para completarla me falta la hora, cuántas personas son."
+  },
+  {
+   "id": 19,
+   "categoria": "ninguna",
+   "motivo": "Intención errada (cancelar → modificar): registra una solicitud equivocada, pero no inventa datos",
+   "respuesta": "Registré tu solicitud de modificación: sábado, a las 14:00, sucursal Providencia, a nombre de Javiera."
+  },
+  {
+   "id": 20,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de cancelación: domingo, a nombre de Francisca."
+  },
+  {
+   "id": 21,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500."
+  },
+  {
+   "id": 22,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Pastel de choclo: $9.500 | Empanada de pino: $2.800."
+  },
+  {
+   "id": 23,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Ensalada chilena (vegana y sin gluten): $4.200."
+  },
+  {
+   "id": 24,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Mote con huesillo (postre/bebida): $3.000."
+  },
+  {
+   "id": 25,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Cazuela de vacuno: $8.900 | Churrasco italiano: $7.800."
+  },
+  {
+   "id": 26,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sucursal Providencia: Av. Nueva Providencia 2150."
+  },
+  {
+   "id": 27,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sucursal Ñuñoa: Av. Irarrázaval 3400."
+  },
+  {
+   "id": 28,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Horario: martes a domingo de 12:30 a 23:00 hrs; lunes cerrado."
+  },
+  {
+   "id": 29,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Los lunes estamos cerrados. Horario: martes a domingo de 12:30 a 23:00 hrs; lunes cerrado."
+  },
+  {
+   "id": 30,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Reservas: de 1 a 12 personas, dentro del horario de atención."
+  },
+  {
+   "id": 31,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Hola! Bienvenido/a a La Picada de Lang-Chi. Puedo ayudarte con reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 32,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Gracias a ti! Te esperamos en La Picada de Lang-Chi."
+  },
+  {
+   "id": 33,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 34,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 35,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 36,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Jugo natural: $2.500. No tengo información sobre sabores; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 37,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos terremoto, pisco sour ni cerveza artesanal en nuestra carta. Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500."
+  },
+  {
+   "id": 38,
+   "categoria": "ninguna",
+   "motivo": "Intención errada (menú → reserva): ofrece reservar; no inventa",
+   "respuesta": "¡Con gusto te ayudo con la reserva! Para completarla me falta la sucursal (Providencia o Ñuñoa), la fecha, la hora, cuántas personas son, el nombre para la reserva."
+  },
+  {
+   "id": 39,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos local en Las Condes ni Maipú; solo en Providencia y Ñuñoa. Sucursal Providencia: Av. Nueva Providencia 2150 | Sucursal Ñuñoa: Av. Irarrázaval 3400."
+  },
+  {
+   "id": 40,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo información sobre estacionamiento privado ni convenio con parking; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 41,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo información sobre despacho, domicilio, pedidosya ni uber eats; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 42,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo información sobre pago, junaeb, sodexo ni amipass; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 43,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sucursal Providencia: Av. Nueva Providencia 2150. No tengo información sobre terraza para fumadores ni sector; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 44,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sucursal Ñuñoa: Av. Irarrázaval 3400. No tengo información sobre teléfono del local ni whatsapp directo; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 45,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos menú ejecutivo ni promoción de almuerzo en nuestra carta. Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500 | Horario: martes a domingo de 12:30 a 23:00 hrs; lunes cerrado."
+  },
+  {
+   "id": 46,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Los lunes estamos cerrados (atendemos martes a domingo de 12:30 a 23:00 hrs; lunes cerrado). ¿Te sirve otro día?"
+  },
+  {
+   "id": 47,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "A las 00:30 estamos cerrados (atendemos martes a domingo de 12:30 a 23:00 hrs; lunes cerrado). ¿Qué otro horario te acomoda?"
+  },
+  {
+   "id": 48,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Solo reservamos para grupos de 1 a 12 personas, así que no puedo reservar para 18."
+  },
+  {
+   "id": 49,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Ensalada chilena (vegana y sin gluten): $4.200 | Mote con huesillo (postre/bebida): $3.000. No tengo información sobre opciones sin lactosa en postres ni diabéticos; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 50,
+   "categoria": "leve",
+   "motivo": "Afirma que no hay 'sillas para guagua': trata un servicio desconocido como si fuera de la carta (mundo cerrado aplicado donde no corresponde)",
+   "respuesta": "No tenemos menú infantil ni sillas para guagua en nuestra carta. Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500."
+  }
+ ]
+}

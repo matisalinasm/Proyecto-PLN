@@ -1,0 +1,248 @@
+{
+ "_nota": "Etiquetas para evaluar si las respuestas a consultas están respaldadas por la base de conocimiento (Clase 12: 'evaluar primero la recuperación'; Clase 10: 'si no está, responde No lo sé'). fuentes = hechos de conocimiento.py que la respuesta DEBE mencionar (basta uno si hay varios en 'alguna_de'). negar = la respuesta debe decir que algo NO existe (mundo cerrado: la carta y las sucursales están completas). abstenerse = la respuesta debe decir que NO tiene información (mundo abierto: estacionamiento, pagos, etc. no se saben).",
+ "ids_hechos": [
+  "plato_pastel",
+  "plato_cazuela",
+  "plato_churrasco",
+  "plato_empanada",
+  "plato_ensalada",
+  "plato_mote",
+  "plato_jugo",
+  "carta",
+  "sucursal_providencia",
+  "sucursal_nunoa",
+  "horario",
+  "politica_reservas"
+ ],
+ "casos": {
+  "21": {
+   "todas": [
+    "carta"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "22": {
+   "todas": [
+    "plato_pastel",
+    "plato_empanada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "23": {
+   "todas": [
+    "plato_ensalada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "24": {
+   "todas": [
+    "plato_mote"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "25": {
+   "todas": [
+    "plato_cazuela",
+    "plato_churrasco"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "26": {
+   "todas": [
+    "sucursal_providencia"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "27": {
+   "todas": [
+    "sucursal_nunoa"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "28": {
+   "todas": [
+    "horario"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "29": {
+   "todas": [
+    "horario"
+   ],
+   "negar": true,
+   "abstenerse": false
+  },
+  "30": {
+   "todas": [
+    "politica_reservas"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "36": {
+   "todas": [
+    "plato_jugo"
+   ],
+   "negar": false,
+   "abstenerse": true
+  },
+  "37": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "38": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "39": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "40": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "41": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "42": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "43": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "44": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "45": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "49": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "50": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": true
+  },
+  "111": {
+   "alguna_de": [
+    "carta",
+    "plato_pastel",
+    "plato_cazuela",
+    "plato_churrasco",
+    "plato_empanada",
+    "plato_ensalada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "112": {
+   "todas": [
+    "plato_churrasco"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "113": {
+   "todas": [
+    "plato_ensalada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "114": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "115": {
+   "todas": [
+    "plato_empanada"
+   ],
+   "negar": false,
+   "abstenerse": true
+  },
+  "116": {
+   "todas": [
+    "horario"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "117": {
+   "todas": [
+    "sucursal_nunoa"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "118": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "119": {
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  "120": {
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  "203": {
+   "todas": [
+    "plato_pastel"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "204": {
+   "todas": [
+    "sucursal_nunoa"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  "205": {
+   "todas": [
+    "horario"
+   ],
+   "negar": true,
+   "abstenerse": false
+  },
+  "211": {
+   "todas": [
+    "plato_ensalada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  }
+ }
+}

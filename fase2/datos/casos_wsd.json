@@ -1,0 +1,17 @@
+{
+  "_nota": "Casos de ambigüedad léxica (Clase 01 y Clase 06, WSD) propios del dominio: 'mañana' puede ser un DÍA o una FRANJA del día, y 'once' puede ser un NÚMERO o la COMIDA de la tarde ('tomar once'). Cada caso indica qué debería extraerse.",
+  "casos": [
+    {"texto": "Quiero reservar mañana a las 13:00", "fecha": "mañana", "cantidad_personas": null},
+    {"texto": "¿Abren en la mañana?", "fecha": null, "cantidad_personas": null},
+    {"texto": "Reserva para mañana en la mañana, por favor", "fecha": "mañana", "cantidad_personas": null},
+    {"texto": "Por la mañana no puedo, mejor el jueves", "fecha": "jueves", "cantidad_personas": null},
+    {"texto": "¿Atienden el domingo en la mañana?", "fecha": "domingo", "cantidad_personas": null},
+    {"texto": "Pasado mañana vamos a ir", "fecha": "pasado mañana", "cantidad_personas": null},
+    {"texto": "Somos once personas", "fecha": null, "cantidad_personas": 11},
+    {"texto": "Mesa para once el sábado", "fecha": "sábado", "cantidad_personas": 11},
+    {"texto": "¿Tienen algo dulce para la once?", "fecha": null, "cantidad_personas": null},
+    {"texto": "Vamos a tomar once con mi abuela, somos tres", "fecha": null, "cantidad_personas": 3},
+    {"texto": "Queremos ir a tomar once el viernes", "fecha": "viernes", "cantidad_personas": null},
+    {"texto": "Para dos, a la hora de once", "fecha": null, "cantidad_personas": 2}
+  ]
+}

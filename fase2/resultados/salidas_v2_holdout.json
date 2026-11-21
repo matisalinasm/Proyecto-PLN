@@ -1,0 +1,320 @@
+{
+ "101": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "mañana",
+   "hora": "20:00",
+   "cantidad_personas": 3,
+   "nombre_cliente": "Ignacio",
+   "sucursal": "Providencia",
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 20:00, 3 persona(s), sucursal Providencia, a nombre de Ignacio. ¿Necesitas algo más?",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.31
+ },
+ "102": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "jueves",
+   "hora": "13:15",
+   "cantidad_personas": 4,
+   "nombre_cliente": "Constanza",
+   "sucursal": "Ñuñoa",
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:15, 4 persona(s), sucursal Ñuñoa, a nombre de Constanza. ¿Necesitas algo más?",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "fuera_de_dominio",
+  "confianza": 0.55
+ },
+ "103": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "sábado",
+   "hora": "21:00",
+   "cantidad_personas": 9,
+   "nombre_cliente": "Tomás",
+   "sucursal": "Providencia",
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 9 persona(s), sucursal Providencia, a nombre de Tomás. ¿Necesitas algo más?",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.57
+ },
+ "104": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "domingo",
+   "hora": "14:00",
+   "cantidad_personas": 2,
+   "nombre_cliente": "Paula",
+   "sucursal": "Ñuñoa",
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Listo, registré tu solicitud de reserva: domingo, a las 14:00, 2 persona(s), sucursal Ñuñoa, a nombre de Paula. ¿Necesitas algo más?",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.94
+ },
+ "105": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "sábado",
+   "hora": null,
+   "cantidad_personas": 15,
+   "nombre_cliente": null,
+   "sucursal": "Ñuñoa",
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Solo reservamos para grupos de 1 a 12 personas, así que no puedo reservar para 15.",
+  "estado": "RECOLECTANDO",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.89
+ },
+ "106": {
+  "intencion": "hacer_reserva",
+  "datos_extraidos": {
+   "fecha": "lunes",
+   "hora": "13:00",
+   "cantidad_personas": 2,
+   "nombre_cliente": null,
+   "sucursal": null,
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Los lunes estamos cerrados (atendemos martes a domingo de 12:30 a 23:00 hrs; lunes cerrado). ¿Te sirve otro día?",
+  "estado": "RECOLECTANDO",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.91
+ },
+ "107": {
+  "intencion": "modificar_reserva",
+  "datos_extraidos": {
+   "fecha": "mañana",
+   "hora": "21:30",
+   "cantidad_personas": null,
+   "nombre_cliente": "Ignacio",
+   "sucursal": null,
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Registré tu solicitud de modificación: mañana, a las 21:30, a nombre de Ignacio.",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "modificar_reserva",
+  "confianza": 0.47
+ },
+ "108": {
+  "intencion": "modificar_reserva",
+  "datos_extraidos": {
+   "fecha": "jueves",
+   "hora": null,
+   "cantidad_personas": 6,
+   "nombre_cliente": "Constanza",
+   "sucursal": null,
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Registré tu solicitud de modificación: jueves, 6 persona(s), a nombre de Constanza.",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "modificar_reserva",
+  "confianza": 0.52
+ },
+ "109": {
+  "intencion": "cancelar_reserva",
+  "datos_extraidos": {
+   "fecha": "domingo",
+   "hora": null,
+   "cantidad_personas": null,
+   "nombre_cliente": "Paula",
+   "sucursal": null,
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Registré tu solicitud de cancelación: domingo, a nombre de Paula.",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "cancelar_reserva",
+  "confianza": 0.86
+ },
+ "110": {
+  "intencion": "cancelar_reserva",
+  "datos_extraidos": {
+   "fecha": "sábado",
+   "hora": null,
+   "cantidad_personas": null,
+   "nombre_cliente": "Tomás",
+   "sucursal": null,
+   "restriccion_alimentaria": null
+  },
+  "respuesta": "Registré tu solicitud de cancelación: sábado, a nombre de Tomás.",
+  "estado": "REGISTRADA",
+  "hechos": [],
+  "intencion_clasificador": "hacer_reserva",
+  "confianza": 0.37
+ },
+ "111": {
+  "intencion": "consultar_menu",
+  "datos_extraidos": {},
+  "respuesta": "Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500.",
+  "estado": "INICIO",
+  "hechos": [
+   "carta"
+  ],
+  "intencion_clasificador": "consultar_menu",
+  "confianza": 0.7
+ },
+ "112": {
+  "intencion": "consultar_menu",
+  "datos_extraidos": {},
+  "respuesta": "Churrasco italiano: $7.800.",
+  "estado": "INICIO",
+  "hechos": [
+   "plato_churrasco"
+  ],
+  "intencion_clasificador": "consultar_menu",
+  "confianza": 0.46
+ },
+ "113": {
+  "intencion": "consultar_menu",
+  "datos_extraidos": {
+   "restriccion_alimentaria": "vegetariano"
+  },
+  "respuesta": "Ensalada chilena (vegana y sin gluten): $4.200.",
+  "estado": "INICIO",
+  "hechos": [
+   "plato_ensalada"
+  ],
+  "intencion_clasificador": "consultar_menu",
+  "confianza": 0.8
+ },
+ "114": {
+  "intencion": "consultar_menu",
+  "datos_extraidos": {},
+  "respuesta": "No tenemos sopaipillas pasadas con riendas ni porotos en nuestra carta. Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500.",
+  "estado": "INICIO",
+  "hechos": [
+   "carta"
+  ],
+  "intencion_clasificador": "consultar_menu",
+  "confianza": 0.82
+ },
+ "115": {
+  "intencion": "consultar_menu",
+  "datos_extraidos": {},
+  "respuesta": "Empanada de pino: $2.800. No tengo información sobre frita ni horno; te recomiendo consultarlo en el local.",
+  "estado": "INICIO",
+  "hechos": [
+   "plato_empanada"
+  ],
+  "intencion_clasificador": "consultar_menu",
+  "confianza": 0.73
+ },
+ "116": {
+  "intencion": "consultar_info_local",
+  "datos_extraidos": {
+   "fecha": "domingo"
+  },
+  "respuesta": "Horario: martes a domingo de 12:30 a 23:00 hrs; lunes cerrado.",
+  "estado": "INICIO",
+  "hechos": [
+   "horario"
+  ],
+  "intencion_clasificador": "consultar_info_local",
+  "confianza": 0.76
+ },
+ "117": {
+  "intencion": "consultar_info_local",
+  "datos_extraidos": {
+   "sucursal": "Ñuñoa"
+  },
+  "respuesta": "Sucursal Ñuñoa: Av. Irarrázaval 3400.",
+  "estado": "INICIO",
+  "hechos": [
+   "sucursal_nunoa"
+  ],
+  "intencion_clasificador": "consultar_info_local",
+  "confianza": 0.34
+ },
+ "118": {
+  "intencion": "fuera_de_dominio",
+  "datos_extraidos": {},
+  "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "fuera_de_dominio",
+  "confianza": 0.38
+ },
+ "119": {
+  "intencion": "consultar_info_local",
+  "datos_extraidos": {},
+  "respuesta": "No tenemos local en Viña del Mar; solo en Providencia y Ñuñoa. Sucursal Providencia: Av. Nueva Providencia 2150 | Sucursal Ñuñoa: Av. Irarrázaval 3400.",
+  "estado": "INICIO",
+  "hechos": [
+   "sucursal_providencia",
+   "sucursal_nunoa"
+  ],
+  "intencion_clasificador": "consultar_info_local",
+  "confianza": 0.58
+ },
+ "120": {
+  "intencion": "consultar_info_local",
+  "datos_extraidos": {},
+  "respuesta": "No tengo información sobre mercado pago ni mach; te recomiendo consultarlo en el local.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "consultar_info_local",
+  "confianza": 0.57
+ },
+ "121": {
+  "intencion": "saludo_despedida",
+  "datos_extraidos": {},
+  "respuesta": "¡Hola! Bienvenido/a a La Picada de Lang-Chi. Puedo ayudarte con reservas, la carta, horarios y sucursales.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "saludo_despedida",
+  "confianza": 0.84
+ },
+ "122": {
+  "intencion": "saludo_despedida",
+  "datos_extraidos": {},
+  "respuesta": "¡Gracias a ti! Te esperamos en La Picada de Lang-Chi.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "saludo_despedida",
+  "confianza": 0.76
+ },
+ "123": {
+  "intencion": "fuera_de_dominio",
+  "datos_extraidos": {},
+  "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "fuera_de_dominio",
+  "confianza": 0.37
+ },
+ "124": {
+  "intencion": "fuera_de_dominio",
+  "datos_extraidos": {},
+  "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "fuera_de_dominio",
+  "confianza": 0.37
+ },
+ "125": {
+  "intencion": "consultar_info_local",
+  "datos_extraidos": {},
+  "respuesta": "No tengo información sobre metro de baquedano a héroes; te recomiendo consultarlo en el local.",
+  "estado": "INICIO",
+  "hechos": [],
+  "intencion_clasificador": "consultar_info_local",
+  "confianza": 0.57
+ }
+}

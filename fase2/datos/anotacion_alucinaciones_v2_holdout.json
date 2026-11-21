@@ -1,0 +1,155 @@
+{
+ "_criterio": "Mismo criterio que anotacion_alucinaciones_v1.json. Revisado a mano. Si el código cambia y una respuesta cambia, experimentos.py la marca 'sin_anotar' para revisarla de nuevo.",
+ "anotaciones": [
+  {
+   "id": 101,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 20:00, 3 persona(s), sucursal Providencia, a nombre de Ignacio. ¿Necesitas algo más?"
+  },
+  {
+   "id": 102,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:15, 4 persona(s), sucursal Ñuñoa, a nombre de Constanza. ¿Necesitas algo más?"
+  },
+  {
+   "id": 103,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 9 persona(s), sucursal Providencia, a nombre de Tomás. ¿Necesitas algo más?"
+  },
+  {
+   "id": 104,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Listo, registré tu solicitud de reserva: domingo, a las 14:00, 2 persona(s), sucursal Ñuñoa, a nombre de Paula. ¿Necesitas algo más?"
+  },
+  {
+   "id": 105,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Solo reservamos para grupos de 1 a 12 personas, así que no puedo reservar para 15."
+  },
+  {
+   "id": 106,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Los lunes estamos cerrados (atendemos martes a domingo de 12:30 a 23:00 hrs; lunes cerrado). ¿Te sirve otro día?"
+  },
+  {
+   "id": 107,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: mañana, a las 21:30, a nombre de Ignacio."
+  },
+  {
+   "id": 108,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de modificación: jueves, 6 persona(s), a nombre de Constanza."
+  },
+  {
+   "id": 109,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de cancelación: domingo, a nombre de Paula."
+  },
+  {
+   "id": 110,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Registré tu solicitud de cancelación: sábado, a nombre de Tomás."
+  },
+  {
+   "id": 111,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500."
+  },
+  {
+   "id": 112,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Churrasco italiano: $7.800."
+  },
+  {
+   "id": 113,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Ensalada chilena (vegana y sin gluten): $4.200."
+  },
+  {
+   "id": 114,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos sopaipillas pasadas con riendas ni porotos en nuestra carta. Nuestra carta: Pastel de choclo $9.500; Cazuela de vacuno $8.900; Churrasco italiano $7.800; Empanada de pino $2.800; Ensalada chilena $4.200; Mote con huesillo $3.000; Jugo natural $2.500."
+  },
+  {
+   "id": 115,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Empanada de pino: $2.800. No tengo información sobre frita ni horno; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 116,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Horario: martes a domingo de 12:30 a 23:00 hrs; lunes cerrado."
+  },
+  {
+   "id": 117,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sucursal Ñuñoa: Av. Irarrázaval 3400."
+  },
+  {
+   "id": 118,
+   "categoria": "ninguna",
+   "motivo": "Intención errada (info → fuera de dominio): no responde, pero no inventa",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 119,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos local en Viña del Mar; solo en Providencia y Ñuñoa. Sucursal Providencia: Av. Nueva Providencia 2150 | Sucursal Ñuñoa: Av. Irarrázaval 3400."
+  },
+  {
+   "id": 120,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo información sobre mercado pago ni mach; te recomiendo consultarlo en el local."
+  },
+  {
+   "id": 121,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Hola! Bienvenido/a a La Picada de Lang-Chi. Puedo ayudarte con reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 122,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Gracias a ti! Te esperamos en La Picada de Lang-Chi."
+  },
+  {
+   "id": 123,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 124,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."
+  },
+  {
+   "id": 125,
+   "categoria": "ninguna",
+   "motivo": "Pregunta fuera de dominio tratada como del local; se abstiene, no inventa",
+   "respuesta": "No tengo información sobre metro de baquedano a héroes; te recomiendo consultarlo en el local."
+  }
+ ]
+}

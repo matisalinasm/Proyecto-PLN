@@ -33,7 +33,7 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 | Etapa | Estado |
 |---|---|
 | 1. Primera versión con IA, solo con prompt engineering | Lista |
-| 2. Explicar el código y comparar versiones simplificadas | En curso |
+| 2. Explicar el código y comparar versiones simplificadas | Versión V2 lista (ver `fase2/`); falta correr V1/V1b en los conjuntos nuevos |
 | 3. Repositorio con el historial de cambios | En curso |
 | 4. Presentación de 15 minutos | Pendiente |
 
@@ -53,3 +53,16 @@ Para contar las alucinaciones usamos un criterio estricto. Cuenta como alucinaci
 Aparte de eso encontramos otro problema. En 5 conversaciones el bot dice "tu reserva está hecha" o "ya cancelé tu reserva", pero no tiene ningún sistema de reservas detrás. No lo contamos como alucinación porque no inventa un dato del restaurante, pero le promete al cliente algo que no hizo.
 
 En la extracción de datos el problema principal es la fecha (18 de 24 bien). El modelo a veces no la guarda, sobre todo en cancelaciones y modificaciones. Además inventó 11 claves que no están en el esquema, como `plato` o `consulta`.
+
+## Fase 2: explicación del código y versiones simplificadas
+
+Todo está en [`fase2/`](fase2/). El documento principal es [`fase2/EXPLICACION_FASE2.md`](fase2/EXPLICACION_FASE2.md): explica cada parte de la V1 con los contenidos del curso y la compara con su reemplazo clásico (TF-IDF, embeddings, regex, NER, autómata de diálogo, recuperación de hechos). Las tablas están en [`fase2/resultados/RESULTADOS.md`](fase2/resultados/RESULTADOS.md).
+
+```bash
+pip install -r requirements.txt
+python -m spacy download es_core_news_md
+cd fase2
+python Version2.py --debug       # chat de la V2 (sin LLM)
+python experimentos.py           # regenera todas las tablas
+python correr_llm.py v1b todos   # V1 con prompt mejorado (requiere Ollama)
+```
