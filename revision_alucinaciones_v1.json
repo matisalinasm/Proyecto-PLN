@@ -1,0 +1,21 @@
+{
+  "version": "v1",
+  "criterio": "Se marca como alucinación toda respuesta que afirma algo que NO está en la información oficial del SYSTEM_PROMPT. Tipos: 'dato_inventado' (inventa un plato, precio, servicio o contacto), 'regla_incumplida' (contradice una regla oficial, por ejemplo el máximo de 12 personas) y 'negacion_sin_fuente' (afirma con seguridad que algo NO existe cuando la fuente no dice nada; lo correcto sería decir que no tiene esa información). Los casos que no aparecen en la lista se revisaron y no tienen alucinaciones.",
+  "revisado_por": "Revisión manual. Criterio A (estricto) acordado por el equipo; se usará el mismo para la V2",
+  "hallazgos_aparte": {
+    "descripcion": "No se cuentan como alucinación, pero se reportan aparte. El bot confirma reservas o cancelaciones como hechas aunque no tiene un sistema de reservas.",
+    "ids": [3, 6, 9, 10, 17]
+  },
+  "casos": [
+    {"id": 23, "tipo": "dato_inventado", "detalle": "Ofrece una versión sin gluten de la cazuela de vacuno, que no existe en la carta"},
+    {"id": 36, "tipo": "dato_inventado", "detalle": "Inventa sabores de jugo (naranja y manzana)"},
+    {"id": 38, "tipo": "dato_inventado", "detalle": "Le pone precio a un completo italiano y una chorrillana que no están en la carta"},
+    {"id": 40, "tipo": "negacion_sin_fuente", "detalle": "Afirma que no hay estacionamiento ni convenio; la fuente no dice nada"},
+    {"id": 41, "tipo": "negacion_sin_fuente", "detalle": "Afirma que no hacen delivery ni están en apps; la fuente no dice nada"},
+    {"id": 42, "tipo": "dato_inventado", "detalle": "Inventa medios de pago (tarjetas de crédito, débito y efectivo)"},
+    {"id": 43, "tipo": "negacion_sin_fuente", "detalle": "Afirma que no hay terraza e inventa un 'salón principal'"},
+    {"id": 44, "tipo": "dato_inventado", "detalle": "Inventa el correo info@lapicadachilangui.cl"},
+    {"id": 48, "tipo": "regla_incumplida", "detalle": "Acepta reservar para 18 personas cuando el máximo es 12"},
+    {"id": 50, "tipo": "dato_inventado", "detalle": "Afirma que hay sillas altas para guagua en ambas sucursales"}
+  ]
+}
