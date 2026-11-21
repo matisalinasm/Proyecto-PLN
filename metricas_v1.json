@@ -1,0 +1,164 @@
+{
+  "version": "v1",
+  "intencion": {
+    "aciertos": 46,
+    "total": 50,
+    "accuracy": 0.92,
+    "por_intencion": {
+      "cancelar_reserva": {
+        "aciertos": 5,
+        "total": 5
+      },
+      "consultar_info_local": {
+        "aciertos": 10,
+        "total": 11
+      },
+      "consultar_menu": {
+        "aciertos": 9,
+        "total": 11
+      },
+      "fuera_de_dominio": {
+        "aciertos": 2,
+        "total": 3
+      },
+      "hacer_reserva": {
+        "aciertos": 13,
+        "total": 13
+      },
+      "modificar_reserva": {
+        "aciertos": 5,
+        "total": 5
+      },
+      "saludo_despedida": {
+        "aciertos": 2,
+        "total": 2
+      }
+    },
+    "confusiones": {
+      "fuera_de_dominio -> consultar_info_local": 1,
+      "consultar_menu -> fuera_de_dominio": 2,
+      "consultar_info_local -> fuera_de_dominio": 1
+    }
+  },
+  "datos": {
+    "correctos": 85,
+    "total": 95,
+    "accuracy": 0.895,
+    "por_campo": {
+      "cantidad_personas": {
+        "correctos": 14,
+        "total": 14
+      },
+      "fecha": {
+        "correctos": 18,
+        "total": 24
+      },
+      "hora": {
+        "correctos": 12,
+        "total": 14
+      },
+      "nombre_cliente": {
+        "correctos": 19,
+        "total": 19
+      },
+      "restriccion_alimentaria": {
+        "correctos": 3,
+        "total": 4
+      },
+      "sucursal": {
+        "correctos": 19,
+        "total": 20
+      }
+    },
+    "errores": [
+      {
+        "id": 1,
+        "campo": "hora",
+        "esperado": "noche",
+        "obtenido": null
+      },
+      {
+        "id": 4,
+        "campo": "fecha",
+        "esperado": "domingo",
+        "obtenido": "este domingo"
+      },
+      {
+        "id": 4,
+        "campo": "hora",
+        "esperado": "almuerzo",
+        "obtenido": null
+      },
+      {
+        "id": 14,
+        "campo": "fecha",
+        "esperado": "domingo",
+        "obtenido": "sábado"
+      },
+      {
+        "id": 15,
+        "campo": "fecha",
+        "esperado": "miércoles",
+        "obtenido": null
+      },
+      {
+        "id": 17,
+        "campo": "fecha",
+        "esperado": "viernes",
+        "obtenido": null
+      },
+      {
+        "id": 20,
+        "campo": "fecha",
+        "esperado": "domingo",
+        "obtenido": null
+      },
+      {
+        "id": 29,
+        "campo": "fecha",
+        "esperado": "lunes",
+        "obtenido": null
+      },
+      {
+        "id": 44,
+        "campo": "sucursal",
+        "esperado": "Ñuñoa",
+        "obtenido": null
+      },
+      {
+        "id": 49,
+        "campo": "restriccion_alimentaria",
+        "esperado": "sin lactosa o diabéticos",
+        "obtenido": null
+      }
+    ],
+    "claves_fuera_de_esquema": {
+      "plato": 2,
+      "precio_pastel_choclo": 1,
+      "precio_empanada_pino": 1,
+      "plato_1": 1,
+      "plato_2": 1,
+      "consultar_info": 1,
+      "consulta": 2,
+      "precio": 1,
+      "pregunta": 1
+    },
+    "conversaciones_sin_datos_extraidos": 1
+  },
+  "alucinacion": {
+    "conversaciones_con_alucinacion": 10,
+    "total": 50,
+    "tasa_global": 0.2,
+    "trampas_con_alucinacion": 9,
+    "total_trampas": 15,
+    "tasa_en_trampas": 0.6,
+    "casos_normales_con_alucinacion": [
+      23
+    ],
+    "por_tipo": {
+      "dato_inventado": 6,
+      "negacion_sin_fuente": 3,
+      "regla_incumplida": 1
+    }
+  }
+}
