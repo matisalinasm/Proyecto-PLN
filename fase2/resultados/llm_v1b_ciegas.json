@@ -1,0 +1,227 @@
+[
+  {
+    "id": 401,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "El mote con huesillo cuesta $3.000.",
+    "latencia_s": 0.88,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 402,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Cierran a las 23:00 horas, los sábados, domingos y viernes. Los lunes estamos cerrados.",
+    "latencia_s": 1.04,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 403,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": "celíaco"
+    },
+    "respuesta": "Sí, tenemos la ensalada chilena (vegana y sin gluten) que es apta para celíacos.",
+    "latencia_s": 1.05,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 404,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.9,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 405,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información. Te sugiero preguntar al personal del local.",
+    "latencia_s": 0.98,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 406,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.86,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 407,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": "Puente Alto",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tenemos sucursal en Puente Alto. Nuestras sucursales son Providencia y Ñuñoa.",
+    "latencia_s": 1.12,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 408,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.89,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 409,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Tenemos jugo natural ($2.500) y mote con huesillo ($3.000) como postre/bebida.",
+    "latencia_s": 1.09,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 410,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tenemos lomo a lo pobre o pernil en nuestra carta.",
+    "latencia_s": 0.92,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 411,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.88,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 412,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Nuestro local de Providencia está en Av. Nueva Providencia 2150.",
+    "latencia_s": 1.02,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 413,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Sí, nuestras empanadas son de pino.",
+    "latencia_s": 0.89,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 414,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": "martes",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Sí, atendemos los martes de 12:30 a 23:00 hrs.",
+    "latencia_s": 1.02,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 415,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.85,
+    "problemas_guardrail": []
+  }
+]

@@ -1,0 +1,305 @@
+{
+ "_criterio": "Mismo criterio unificado que anotacion_alucinaciones_v1.json (grave = inventa un dato o viola una política; leve = afirma algo que la base no respalda o se contradice; accion_falsa = dice haber hecho algo que el sistema no hace). Revisado por una persona; conviene una segunda revisión. En la V1b, 'registré tu solicitud' cuenta como acción falsa porque la V1b no tiene ningún registro detrás (la V2 sí guarda las solicitudes en una lista).",
+ "anotaciones": [
+  {
+   "id": 1,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "¡Registré tu solicitud! ¿A qué hora te gustaría reservar?"
+  },
+  {
+   "id": 2,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 3,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud"
+  },
+  {
+   "id": 4,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 5,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 6,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 7,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 8,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 9,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 10,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 11,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 12,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 13,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud de cambio a la sucursal de Providencia a nombre de Diego."
+  },
+  {
+   "id": 14,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud de cambiar la reserva del sábado al domingo a la misma hora."
+  },
+  {
+   "id": 15,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "Registré tu solicitud. ¿Podrías indicarme en qué sucursal y a qué hora deseas realizar la reserva, y para cuántas personas?"
+  },
+  {
+   "id": 16,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 17,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 18,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 19,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 20,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás y sin pedir los datos que faltan",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 21,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Tenemos pastel de choclo ($9.500), cazuela de vacuno ($8.900), churrasco italiano ($7.800), empanada de pino ($2.800), ensalada chilena ($4.200) y mote con huesillo ($3.000)."
+  },
+  {
+   "id": 22,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "El pastel de choclo cuesta $9.500 y la empanada de pino $2.800."
+  },
+  {
+   "id": 23,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Sí, tenemos ensalada chilena (vegana y sin gluten)."
+  },
+  {
+   "id": 24,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Tenemos mote con huesillo como postre/bebida. ¿Te gustaría probarlo?"
+  },
+  {
+   "id": 25,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "La cazuela de vacuno sale $8.900 y el churrasco italiano $7.800."
+  },
+  {
+   "id": 26,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Nuestra sucursal en Providencia está en Av. Nueva Providencia 2150."
+  },
+  {
+   "id": 27,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "La sucursal de Ñuñoa está en Av. Irarrázaval 3400."
+  },
+  {
+   "id": 28,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Atendemos de martes a domingo de 12:30 a 23:00 hrs."
+  },
+  {
+   "id": 29,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No, los lunes estamos cerrados."
+  },
+  {
+   "id": 30,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Aceptamos reservas para grupos de 1 a 12 personas."
+  },
+  {
+   "id": 31,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Buenas tardes! ¿En qué le puedo ayudar?"
+  },
+  {
+   "id": 32,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Que se te dé bien! Estamos a tu disposición."
+  },
+  {
+   "id": 33,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 34,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 35,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 36,
+   "categoria": "grave",
+   "motivo": "Inventa sabores de jugo (naranja y tomate)",
+   "respuesta": "Ofrecemos jugo natural de naranja y de tomate."
+  },
+  {
+   "id": 37,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos terremoto, pisco sour o cerveza artesanal en nuestra carta."
+  },
+  {
+   "id": 38,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información. Tenemos pastel de choclo, cazuela de vacuno, churrasco italiano, empanada de pino, ensalada chilena, mote con huesillo y jugo natural."
+  },
+  {
+   "id": 39,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos sucursales en Las Condes o Maipú. Nuestras sucursales son Providencia y Ñuñoa."
+  },
+  {
+   "id": 40,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 41,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 42,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 43,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 44,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 45,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 46,
+   "categoria": "grave",
+   "motivo": "'Registra' una reserva para un lunes (cerrado)",
+   "respuesta": "Registré tu solicitud."
+  },
+  {
+   "id": 47,
+   "categoria": "grave",
+   "motivo": "'Registra' una reserva a las 00:30 (fuera de horario)",
+   "respuesta": "Registré tu solicitud. ¿En qué sucursal, Providencia o Ñuñoa, prefieres hacer la reserva?"
+  },
+  {
+   "id": 48,
+   "categoria": "grave",
+   "motivo": "'Registra' una reserva para 18 personas (máximo 12)",
+   "respuesta": "Registré tu solicitud. Necesito saber en qué sucursal (Providencia o Ñuñoa) y a qué hora te gustaría reservar."
+  },
+  {
+   "id": 49,
+   "categoria": "leve",
+   "motivo": "Afirma que no hay opciones sin lactosa ni para diabéticos: no hay información",
+   "respuesta": "No tenemos opciones específicas sin lactosa o para diabéticos en nuestros postres. Ofrecemos mote con huesillo."
+  },
+  {
+   "id": 50,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  }
+ ]
+}

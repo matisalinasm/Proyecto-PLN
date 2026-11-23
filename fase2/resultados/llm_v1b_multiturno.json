@@ -1,0 +1,182 @@
+[
+  {
+    "id": 201,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "viernes",
+      "hora": "20:30",
+      "cantidad_personas": 5,
+      "nombre_cliente": "Ignacia",
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud para 5 personas a nombre de Ignacia en Providencia para el viernes a las 20:30.",
+    "latencia_s": 1.17,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 202,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": "13:00",
+      "cantidad_personas": 6,
+      "nombre_cliente": "Rocío",
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 1.08,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 203,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "El pastel de choclo cuesta $9.500.",
+    "latencia_s": 0.95,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 204,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "La sucursal de Ñuñoa está en Av. Irarrázaval 3400.",
+    "latencia_s": 1.09,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 205,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": "lunes",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "El lunes estamos cerrado.",
+    "latencia_s": 0.93,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 206,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": "21:00",
+      "cantidad_personas": 3,
+      "nombre_cliente": "Joaquín",
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud para 3 personas el jueves a las 21:00 en la sucursal de Ñuñoa (Av. Irarrázaval 3400) a nombre de Joaquín.",
+    "latencia_s": 1.32,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 207,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "fecha": "mañana",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": "Felipe",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Para poder cancelar tu reserva, ¿podrías indicarme la hora y cantidad de personas para las que la hiciste?",
+    "latencia_s": 1.02,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 208,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": "celíaca"
+    },
+    "respuesta": "Tenemos la ensalada chilena, que es vegana y sin gluten, ideal para personas con intolerancia al gluten.",
+    "latencia_s": 1.05,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 209,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "fecha": "martes",
+      "hora": "20:00",
+      "cantidad_personas": 2,
+      "nombre_cliente": null,
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud",
+    "latencia_s": 0.94,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 210,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "fecha": "viernes",
+      "hora": null,
+      "cantidad_personas": 12,
+      "nombre_cliente": null,
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud para 12 personas el viernes en Providencia.",
+    "latencia_s": 0.98,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 211,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": "vegana"
+    },
+    "respuesta": "La ensalada chilena cuesta $4.200.",
+    "latencia_s": 0.93,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 212,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": "22:00",
+      "cantidad_personas": null,
+      "nombre_cliente": "Camila",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Por favor, indícame en qué sucursal (Providencia o Ñuñoa) deseas modificar tu reserva y cuántas personas serán.",
+    "latencia_s": 1.1,
+    "problemas_guardrail": []
+  }
+]

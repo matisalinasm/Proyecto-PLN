@@ -1,0 +1,155 @@
+{
+ "_criterio": "Mismo criterio unificado que anotacion_alucinaciones_v1.json (grave = inventa un dato o viola una política; leve = afirma algo que la base no respalda o se contradice; accion_falsa = dice haber hecho algo que el sistema no hace). Revisado por una persona; conviene una segunda revisión. En la V1b, 'registré tu solicitud' cuenta como acción falsa porque la V1b no tiene ningún registro detrás (la V2 sí guarda las solicitudes en una lista).",
+ "anotaciones": [
+  {
+   "id": 101,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud"
+  },
+  {
+   "id": 102,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud"
+  },
+  {
+   "id": 103,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 104,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 105,
+   "categoria": "grave",
+   "motivo": "'Registra' una reserva para 15 personas (máximo 12)",
+   "respuesta": "Registré tu solicitud. ¿A qué hora te gustaría reservar?"
+  },
+  {
+   "id": 106,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información. Lamentablemente, estamos cerrados los lunes."
+  },
+  {
+   "id": 107,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "Registré tu solicitud."
+  },
+  {
+   "id": 108,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 109,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "registré tu solicitud."
+  },
+  {
+   "id": 110,
+   "categoria": "accion_falsa",
+   "motivo": "Dice 'registré tu solicitud' sin registro detrás",
+   "respuesta": "Registré tu solicitud de cancelación para el sábado a nombre de Tomás. ¿Necesitas algo más?"
+  },
+  {
+   "id": 111,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Para almorzar, te recomiendo nuestro pastel de choclo o la cazuela de vacuno, ¡son clásicos de La Picada de Lang-Chi!"
+  },
+  {
+   "id": 112,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "El churrasco italiano está a $7.800."
+  },
+  {
+   "id": 113,
+   "categoria": "grave",
+   "motivo": "Ofrece pastel de choclo y empanada de pino como vegetarianos e inventa una 'cazuela de vacuno (sin carne)'",
+   "respuesta": "Tenemos pastel de choclo, cazuela de vacuno (sin carne), empanada de pino y ensalada chilena (vegana y sin gluten)."
+  },
+  {
+   "id": 114,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tenemos sopaipillas pasadas ni porotos con riendas en nuestra carta."
+  },
+  {
+   "id": 115,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información. La empanada de pino está en nuestra carta por $2.800."
+  },
+  {
+   "id": 116,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "Estamos abiertos hasta las 23:00 horas el domingo."
+  },
+  {
+   "id": 117,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "La sucursal de Ñuñoa está en Av. Irarrázaval 3400."
+  },
+  {
+   "id": 118,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 119,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 120,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 121,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Wena! ¿En qué puedo ayudarte?"
+  },
+  {
+   "id": 122,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "¡Que estés bien también!"
+  },
+  {
+   "id": 123,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 124,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  },
+  {
+   "id": 125,
+   "categoria": "ninguna",
+   "motivo": "",
+   "respuesta": "No tengo esa información."
+  }
+ ]
+}

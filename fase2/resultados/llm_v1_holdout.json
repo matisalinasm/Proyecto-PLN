@@ -1,0 +1,277 @@
+[
+  {
+    "id": 101,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "mañana",
+      "hora": "20:00",
+      "cantidad_personas": 3,
+      "nombre_cliente": "Ignacio",
+      "sucursal": "Providencia"
+    },
+    "respuesta": "¡Wena! Sí, tenemos disponibilidad para mañana a las 20:00 en Providencia para 3 personas a nombre de Ignacio. ¡Perfecto! ¿Algo más en lo que pueda ayudarte?",
+    "latencia_s": 19.31,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 102,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": "13:15",
+      "cantidad_personas": 4,
+      "sucursal": "Ñuñoa",
+      "nombre_cliente": "Constanza",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Excelente, Constanza! Confirmamos su reserva para 4 personas a las 13:15 en nuestra sucursal de Ñuñoa. ¡Le esperamos!",
+    "latencia_s": 1.41,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 103,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": "21:00",
+      "cantidad_personas": 9,
+      "sucursal": "Providencia",
+      "nombre_cliente": "Tomás"
+    },
+    "respuesta": "¡Hola Tomás! Perfecto, confirmamos la reserva para el sábado a las 21:00 en nuestra sucursal de Nueva Providencia para 9 personas. ¡Que tengas un excelente cumpleaños para tu papá!",
+    "latencia_s": 1.45,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 104,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "domingo",
+      "hora": "14:00",
+      "cantidad_personas": 2,
+      "nombre_cliente": "Paula",
+      "sucursal": "Ñuñoa"
+    },
+    "respuesta": "¡Hola Paula! Con gusto te reservamos una mesa para dos personas el domingo a las 14:00 en nuestra sucursal de Ñuñoa. ¿Todo correcto?",
+    "latencia_s": 1.37,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 105,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": null,
+      "cantidad_personas": 15,
+      "sucursal": "Ñuñoa",
+      "nombre_cliente": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Claro que sí! Para 15 personas en nuestra sucursal de Ñuñoa el sábado, ¿a qué hora les gustaría reservar?",
+    "latencia_s": 1.37,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 106,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "lunes",
+      "hora": "13:00",
+      "cantidad_personas": 2
+    },
+    "respuesta": "¡Hola! Lamentablemente, estamos cerrados los lunes. ¿Te gustaría reservar para otro día?",
+    "latencia_s": 0.91,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 107,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "nombre_cliente": "Ignacio",
+      "fecha": "mañana",
+      "hora": "21:30"
+    },
+    "respuesta": "¡Hola! Claro que sí, podemos hacer la reserva para Ignacio. ¿En qué sucursal le gustaría reservar? Tenemos opciones en Providencia y Ñuñoa.",
+    "latencia_s": 1.12,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 108,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": null,
+      "cantidad_personas": 6,
+      "nombre_cliente": "Constanza",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Perfecto Constanza! Confirmamos tu reserva para 6 personas el jueves. ¿En qué sucursal te gustaría reservar? Tenemos opciones en Providencia y Ñuñoa.",
+    "latencia_s": 1.39,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 109,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "nombre_cliente": "Paula"
+    },
+    "respuesta": "¡Claro que sí, Paula! Ya cancelamos tu reserva del domingo. ¿En qué día y hora te gustaría reservar ahora?",
+    "latencia_s": 0.83,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 110,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "nombre_cliente": "Tomás",
+      "sucursal": null,
+      "fecha": "sábado",
+      "hora": null
+    },
+    "respuesta": "¡Perfecto, Tomás! Para confirmar la cancelación, ¿en cuál de nuestras sucursales (Providencia o Ñuñoa) hiciste la reserva y a qué hora?",
+    "latencia_s": 0.95,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 111,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Claro que sí! Para almorzar te recomendamos nuestro delicioso pastel de choclo ($9.500), cazuela de vacuno ($8.900) o una empanada de pino ($2.800). ¡Todo muy rico!",
+    "latencia_s": 1.08,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 112,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "plato": "Churrasco italiano"
+    },
+    "respuesta": "El churrasco italiano está a $7.800.",
+    "latencia_s": 0.7,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 113,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "restriccion_alimentaria": "vegetariano"
+    },
+    "respuesta": "¡Hola! En La Picada de Lang-Chi tenemos varias opciones vegetarianas deliciosas. Puedes pedir nuestra Ensalada Chilena (que también es opción vegana y sin gluten), o la Empanada de Pino. ¡Te encantarán!",
+    "latencia_s": 1.15,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 114,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, no ofrecemos sopaipillas pasadas ni porotos con riendas en nuestro menú. Tenemos pastel de choclo, cazuela de vacuno, churrasco italiano, empanada de pino, ensalada chilena, mote con huesillo y jugos naturales. ¿Te gustaría saber algo más sobre alguno de estos platos o quizás hacer una reserva?",
+    "latencia_s": 1.31,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 115,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "plato": "Empanada de pino"
+    },
+    "respuesta": "¡Hola! Nuestras empanadas de pino se hornean, ¡salen deliciosas!",
+    "latencia_s": 0.8,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 116,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "sucursal": null
+    },
+    "respuesta": "Estamos abiertos hasta las 23:00 horas los domingos.",
+    "latencia_s": 0.69,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 117,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "sucursal": "Ñuñoa"
+    },
+    "respuesta": "Nuestro restaurante de Ñuñoa está ubicado en Av. Irarrázaval 3400.",
+    "latencia_s": 0.78,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 118,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "consulta": "Se puede llevar al perro?"
+    },
+    "respuesta": "¡Hola! Lamentablemente, no podemos recibir mascotas en La Picada de Lang-Chi. Agradecemos tu comprensión.",
+    "latencia_s": 0.81,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 119,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "consulta": "local en Viña del Mar"
+    },
+    "respuesta": "¡Hola! Lamentablemente, actualmente solo contamos con locales en Providencia y Ñuñoa. ¡Esperamos poder servirte en alguna de esas sucursales!",
+    "latencia_s": 0.91,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 120,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, en La Picada de Lang-Chi solo aceptamos pagos en efectivo o con tarjetas de crédito. No trabajamos con Mercado Pago ni Mach.",
+    "latencia_s": 0.86,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 121,
+    "intencion": "saludo_despedida",
+    "datos_extraidos": {},
+    "respuesta": "¡Wena! ¿En qué te puedo ayudar hoy?",
+    "latencia_s": 0.65,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 122,
+    "intencion": "saludo_despedida",
+    "datos_extraidos": {
+      "nombre_cliente": null,
+      "sucursal": null,
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Un gusto atenderte! Que tengas un excelente día.",
+    "latencia_s": 1.12,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 123,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {},
+    "respuesta": "¡Qué lindo detalle! Lamentablemente, soy un asistente virtual especializado en La Picada de Lang-Chi y no puedo ayudarte a escribir poemas. Pero te puedo ofrecer un pastel de choclo para celebrar tu amor, ¡es un clásico!",
+    "latencia_s": 1.06,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 124,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Qué buena pregunta! Lamentablemente, no tenemos recetas de nuestros deliciosos pasteles de choclo para hacer en casa. En La Picada de Lang-Chi, nuestro pastel de choclo es una receta especial que hemos perfeccionado a lo largo de los años. Pero te puedo asegurar que nuestro pastel de choclo en el restaurante es ¡increíble! Te invito a probarlo en cualquiera de nuestras sucursales: Providencia o Ñuñoa. ¡Te va a encantar!",
+    "latencia_s": 7.59,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 125,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, no tengo información sobre tiempos de viaje en transporte público. Soy el asistente de \"La Picada de Lang-Chi\" y puedo ayudarte con reservas y consultas sobre nuestro menú y sucursales.",
+    "latencia_s": 0.97,
+    "problemas_guardrail": []
+  }
+]
