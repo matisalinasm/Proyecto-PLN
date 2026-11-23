@@ -111,7 +111,7 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 
 | Sistema | Latencia media por turno | p95 | Modelo |
 |---|---|---|---|
-| V2 (sin LLM) | 16 ms | 29 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
+| V2 (sin LLM) | 11 ms | 18 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
 
 ## E6 · Ablación: qué aporta cada componente
 

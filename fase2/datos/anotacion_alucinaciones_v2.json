@@ -5,7 +5,7 @@
    "id": 1,
    "categoria": "ninguna",
    "motivo": "",
-   "respuesta": "Perfecto, tengo: viernes, (noche), 4 persona(s), sucursal Providencia. Para completarla me falta el nombre para la reserva, la hora (necesito una hora exacta)."
+   "respuesta": "Perfecto, tengo: viernes, (noche), 4 persona(s), sucursal Providencia. Para completarla me falta el nombre para la reserva y la hora (necesito una hora exacta)."
   },
   {
    "id": 2,
@@ -107,7 +107,7 @@
    "id": 18,
    "categoria": "ninguna",
    "motivo": "Intención errada (cancelar → reservar): pide datos de reserva; no inventa",
-   "respuesta": "Perfecto, tengo: hoy, sucursal Providencia, a nombre de Diego. Para completarla me falta la hora, cuántas personas son."
+   "respuesta": "Perfecto, tengo: hoy, sucursal Providencia, a nombre de Diego. Para completarla me falta la hora y cuántas personas son."
   },
   {
    "id": 19,
@@ -227,7 +227,7 @@
    "id": 38,
    "categoria": "ninguna",
    "motivo": "Intención errada (menú → reserva): ofrece reservar; no inventa",
-   "respuesta": "¡Con gusto te ayudo con la reserva! Para completarla me falta la sucursal (Providencia o Ñuñoa), la fecha, la hora, cuántas personas son, el nombre para la reserva."
+   "respuesta": "¡Con gusto te ayudo con la reserva! Para completarla me falta la sucursal (Providencia o Ñuñoa), la fecha, la hora, cuántas personas son y el nombre para la reserva."
   },
   {
    "id": 39,

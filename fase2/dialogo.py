@@ -52,6 +52,9 @@ TRANSICIONES = {
 }
 MARCADOR = re.compile(r"^\W*(y|ah|oh|perdon|mejor|entonces|ya|ok|pero|bueno|al final)\b")
 ELIPSIS = re.compile(r"^\W*y\b")
+# Saludo al inicio del mensaje ("Hola tienen delivery?"): se separa como un segmento aparte
+SALUDO_INICIAL = re.compile(r"^\W*(hola+|holi|wena+|al[oó]|buen[oa]s(\s+(d[ií]as|tardes|noches))?)\b[\s,.!¡]*",
+                            re.IGNORECASE)
 NOMBRE_CAMPO = {"fecha": "la fecha", "hora": "la hora", "cantidad_personas": "cuántas personas son",
                 "nombre_cliente": "el nombre para la reserva",
                 "sucursal": "la sucursal (Providencia o Ñuñoa)"}
@@ -60,6 +63,12 @@ NOMBRE_CAMPO = {"fecha": "la fecha", "hora": "la hora", "cantidad_personas": "cu
 def _minutos(hora):
     m = re.fullmatch(r"(\d{2}):(\d{2})", hora or "")
     return int(m.group(1)) * 60 + int(m.group(2)) if m else None
+
+
+def enumerar(items) -> str:
+    """'a, b y c' en vez de 'a, b, c'."""
+    items = list(items)
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " y " + items[-1]
 
 
 def resumen(d: dict) -> str:
@@ -128,16 +137,31 @@ class Asistente:
         """Un turno puede traer varios actos de habla ("Hola, quiero reservar" = expresivo +
         directivo). Se segmenta por puntuación (segmentación simple del discurso, Clase 07)
         y, si algún segmento es un acto directivo transaccional (reservar/modificar/cancelar),
-        ese acto prevalece sobre el resto; si no, se usa la clasificación del mensaje completo."""
+        ese acto prevalece sobre el resto. Si el mensaje parte con un saludo o trae una
+        pregunta ("Hola, ¿tienen delivery?") y otro segmento no es social, gana ese segmento:
+        el saludo es un acto expresivo y no debe tapar lo que el cliente quiere saber. Una
+        despedida sin pregunta ("Ya, muchas gracias, que estés bien") sigue siendo despedida."""
         segmentos = [s for s in re.split(r"[,.;!?¡¿]+", mensaje) if len(s.strip()) > 1] or [mensaje]
+        resto = SALUDO_INICIAL.sub("", mensaje, count=1).strip()
+        if len(resto) > 1 and resto != mensaje.strip() and len(segmentos) == 1:
+            segmentos.append(resto)                      # "Hola tienen delivery?" sin coma
         if len(segmentos) == 1 or not self.seguimiento:
             return self.clf.predecir(mensaje)
         completo = self.clf.predecir(mensaje)
-        directivos = [c for c in (self.clf.predecir(s) for s in segmentos)
+        por_segmento = [self.clf.predecir(s) for s in segmentos]
+        directivos = [c for c in por_segmento
                       if c[0] in TRANSACCIONALES and c[1] >= config.UMBRAL_SEGMENTO]
-        if completo[0] in TRANSACCIONALES or not directivos:
+        if completo[0] in TRANSACCIONALES:
             return completo
-        return max(directivos, key=lambda c: c[1])
+        if directivos:
+            return max(directivos, key=lambda c: c[1])
+        es_pregunta = "?" in mensaje or "¿" in mensaje
+        if completo[0] == "saludo_despedida" and (SALUDO_INICIAL.match(mensaje) or es_pregunta):
+            otros = [c for c in por_segmento
+                     if c[0] != "saludo_despedida" and c[1] >= config.UMBRAL_SEGMENTO]
+            if otros:
+                return max(otros, key=lambda c: c[1])
+        return completo
 
     # ------------------------------------------------------------ turno
     def procesar(self, mensaje: str) -> dict:
@@ -151,7 +175,8 @@ class Asistente:
             salida_datos = dict(self.slots)
         elif intencion in CONSULTAS:
             eliptica = bool(ELIPSIS.match(normalizar(mensaje)))
-            respuesta, hechos = responder_consulta(mensaje, intencion, datos, self.rec,
+            consulta = SALUDO_INICIAL.sub("", mensaje, count=1).strip() or mensaje  # sin "buenas tardes"
+            respuesta, hechos = responder_consulta(consulta, intencion, datos, self.rec,
                                                    referentes_previos=self.ultimos_hechos,
                                                    eliptica=eliptica and self.seguimiento,
                                                    mundo_cerrado_por_intencion=self.mundo_cerrado)
@@ -184,7 +209,7 @@ class Asistente:
                 faltan.append("hora")
             if faltan:
                 tengo = resumen(d)
-                pedir = ", ".join(NOMBRE_CAMPO[c] for c in dict.fromkeys(faltan))
+                pedir = enumerar(NOMBRE_CAMPO[c] for c in dict.fromkeys(faltan))
                 pref = f"Perfecto, tengo: {tengo}. " if tengo else "¡Con gusto te ayudo con la reserva! "
                 return pref + f"Para completarla me falta {pedir}" + (" (necesito una hora exacta)." if aprox else "."), "incompleta"
             return self._registrar("reserva", f"Listo, registré tu solicitud de reserva: {resumen(d)}. ¿Necesitas algo más?")
@@ -194,9 +219,10 @@ class Asistente:
             if not any(d.get(c) for c in ["fecha", "hora", "cantidad_personas", "sucursal", "restriccion_alimentaria"]):
                 return f"¿Qué quieres cambiar de la reserva a nombre de {d['nombre_cliente']}?", "incompleta"
             return self._registrar("modificacion", f"Registré tu solicitud de modificación: {resumen(d)}.")
-        faltan = [NOMBRE_CAMPO[c] for c in config.CAMPOS_CANCELACION if not d.get(c)]
+        faltan = [("el nombre con que la hiciste" if c == "nombre_cliente" else NOMBRE_CAMPO[c])
+                  for c in config.CAMPOS_CANCELACION if not d.get(c)]
         if faltan:
-            return "Para cancelar necesito " + " y ".join(faltan) + " de la reserva.", "incompleta"
+            return "Para cancelar la reserva necesito " + enumerar(faltan) + ".", "incompleta"
         return self._registrar("cancelacion", f"Registré tu solicitud de cancelación: {resumen(d)}.")
 
     def _registrar(self, tipo, texto):
