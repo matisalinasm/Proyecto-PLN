@@ -1,7 +1,8 @@
 """
 Ejecuta las versiones con LLM sobre los conjuntos de evaluación y guarda sus salidas
 en resultados/ para que experimentos.py las compare con la V2. REQUIERE Ollama con gemma3:4b
-(no se pudo correr en el entorno donde se armó la fase 2: por eso estos resultados faltan).
+(los resultados ya están guardados en resultados/llm_*.json; solo hay que volver a correrlo si se cambia
+el prompt o el modelo).
 
     python correr_llm.py v1  holdout        # V1 cruda (prompt original) sobre el holdout
     python correr_llm.py v1  multiturno

@@ -9,7 +9,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Perfecto, tengo: viernes, (noche), 4 persona(s), sucursal Providencia. Para completarla me falta el nombre para la reserva y la hora (necesito una hora exacta).",
+  "respuesta": "Perfecto, tengo: viernes, (noche), 4 personas, sucursal Providencia. Para completarla me falta el nombre para la reserva y la hora (necesito una hora exacta).",
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -25,7 +25,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 14:00, 2 persona(s), sucursal Ñuñoa, a nombre de Camila. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 14:00, 2 personas, sucursal Ñuñoa, a nombre de Camila. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -41,7 +41,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 6 persona(s), sucursal Providencia, a nombre de Mateo. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 6 personas, sucursal Providencia, a nombre de Mateo. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -57,7 +57,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Perfecto, tengo: domingo, (almuerzo), 3 persona(s), sucursal Ñuñoa, a nombre de Francisca. Para completarla me falta la hora (necesito una hora exacta).",
+  "respuesta": "Perfecto, tengo: domingo, (almuerzo), 3 personas, sucursal Ñuñoa, a nombre de Francisca. Para completarla me falta la hora (necesito una hora exacta).",
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -73,7 +73,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: hoy, a las 20:30, 2 persona(s), sucursal Ñuñoa, a nombre de Diego. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: hoy, a las 20:30, 2 personas, sucursal Ñuñoa, a nombre de Diego. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -89,7 +89,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:30, 8 persona(s), sucursal Providencia, a nombre de Sebastián Torres. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:30, 8 personas, sucursal Providencia, a nombre de Sebastián Torres. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
@@ -105,7 +105,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 19:00, 5 persona(s), sucursal Ñuñoa, a nombre de Vale. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 19:00, 5 personas, sucursal Ñuñoa, a nombre de Vale. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -121,7 +121,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": "sin gluten"
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: miércoles, a las 15:00, 1 persona(s), sucursal Providencia, a nombre de Sofía, restricción: sin gluten. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: miércoles, a las 15:00, 1 persona, sucursal Providencia, a nombre de Sofía, restricción: sin gluten. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -137,7 +137,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: viernes, a las 21:30, 10 persona(s), sucursal Ñuñoa, a nombre de Rodrigo. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: viernes, a las 21:30, 10 personas, sucursal Ñuñoa, a nombre de Rodrigo. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -153,7 +153,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 14:00, 12 persona(s), sucursal Providencia, a nombre de Javiera. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 14:00, 12 personas, sucursal Providencia, a nombre de Javiera. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -185,7 +185,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Registré tu solicitud de modificación: viernes, 7 persona(s), sucursal Providencia, a nombre de Rodrigo.",
+  "respuesta": "Registré tu solicitud de modificación: viernes, 7 personas, sucursal Providencia, a nombre de Rodrigo.",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",

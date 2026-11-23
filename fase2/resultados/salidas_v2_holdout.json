@@ -9,7 +9,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 20:00, 3 persona(s), sucursal Providencia, a nombre de Ignacio. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: mañana, a las 20:00, 3 personas, sucursal Providencia, a nombre de Ignacio. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -25,7 +25,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:15, 4 persona(s), sucursal Ñuñoa, a nombre de Constanza. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: jueves, a las 13:15, 4 personas, sucursal Ñuñoa, a nombre de Constanza. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
@@ -41,7 +41,7 @@
    "sucursal": "Providencia",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 9 persona(s), sucursal Providencia, a nombre de Tomás. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: sábado, a las 21:00, 9 personas, sucursal Providencia, a nombre de Tomás. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -57,7 +57,7 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Listo, registré tu solicitud de reserva: domingo, a las 14:00, 2 persona(s), sucursal Ñuñoa, a nombre de Paula. ¿Necesitas algo más?",
+  "respuesta": "Listo, registré tu solicitud de reserva: domingo, a las 14:00, 2 personas, sucursal Ñuñoa, a nombre de Paula. ¿Necesitas algo más?",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
@@ -121,7 +121,7 @@
    "sucursal": null,
    "restriccion_alimentaria": null
   },
-  "respuesta": "Registré tu solicitud de modificación: jueves, 6 persona(s), a nombre de Constanza.",
+  "respuesta": "Registré tu solicitud de modificación: jueves, 6 personas, a nombre de Constanza.",
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",

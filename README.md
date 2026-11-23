@@ -34,7 +34,7 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 |---|---|
 | 1. Primera versión con IA, solo con prompt engineering | Lista |
 | 2. Explicar el código y comparar versiones simplificadas | Lista: V1 vs V1b (prompt mejorado) vs V2 (sin LLM), ver `fase2/` |
-| 3. Repositorio con el historial de cambios | En curso |
+| 3. Repositorio con el historial de cambios | Lista |
 | 4. Presentación de 15 minutos | Pendiente |
 
 ## Resultados de la versión 1 (línea base)
