@@ -80,7 +80,7 @@ Solo consultas (menú/local) con etiqueta en `datos/etiquetas_grounding.json`. `
 | ciegas | V2 sin 'No lo sé' (solo hechos recuperados) | 15 | 100% | 100% | 60% | **60%** | 3 | 0 |
 | ciegas | V2 sin mundo cerrado (siempre se abstiene) | 15 | 100% | 87% | 93% | **80%** | 0 | 0 |
 
-### Sensibilidad al umbral de recuperación TAU (fijado en 0.15 antes de evaluar)
+### Sensibilidad al umbral de recuperación TAU (config: 0.15, fijado antes de evaluar)
 
 | TAU | prueba (todo) | holdout (todo) | ciegas (todo) |
 |---|---|---|---|
@@ -111,7 +111,7 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 
 | Sistema | Latencia media por turno | p95 | Modelo |
 |---|---|---|---|
-| V2 (sin LLM) | 12 ms | 20 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
+| V2 (sin LLM) | 16 ms | 29 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
 
 ## E6 · Ablación: qué aporta cada componente
 

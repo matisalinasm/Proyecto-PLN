@@ -23,6 +23,7 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
 
 import conocimiento as kb
+import config
 from dialogo import Asistente
 from extraccion import (CAMPOS, EXTRACTORES, RESTRICCIONES, fecha_colocacional, fecha_ingenua, fecha_pos,
                         personas_colocacional, personas_ingenua)
@@ -30,7 +31,6 @@ from guardrails import precios_sin_respaldo
 from intencion import INTENCIONES, MODELOS, Clasificador, cargar_entrenamiento, construir
 from preprocesamiento import normalizar
 from respuesta import Recuperador
-import respuesta
 
 warnings.filterwarnings("ignore")
 AQUI = Path(__file__).parent
@@ -144,7 +144,7 @@ _CLF, _REC = {}, Recuperador()
 
 
 def correr_v2(casos, **cfg):
-    nombre = cfg.pop("clasificador", "hibrido_lr")
+    nombre = cfg.pop("clasificador", None) or config.CLASIFICADOR
     _CLF.setdefault(nombre, Clasificador(nombre))
     salidas, tiempos = {}, []
     for c in casos:
@@ -160,7 +160,7 @@ def correr_v2(casos, **cfg):
 # ===========================================================================
 def e1_intencion():
     X, y = cargar_entrenamiento()
-    cv = StratifiedKFold(5, shuffle=True, random_state=0)
+    cv = StratifiedKFold(config.CV_PARTICIONES, shuffle=True, random_state=config.SEMILLA)
     filas, detalle = [], {}
     primer = lambda casos: [c["turnos"][0] for c in casos]  # noqa: E731
     for m in MODELOS:
@@ -184,8 +184,8 @@ def e1_intencion():
           "de 5 particiones sobre el corpus de entrenamiento (150 frases): **es el criterio para elegir el modelo**, "
           "porque no mira los datos de prueba. Las reglas no se entrenan: su CV es su desempeño directo sobre el corpus.", "",
           tabla(["Modelo", "CV F1", "Prueba acc", "Prueba F1", "Holdout acc", "Holdout F1"], filas), "",
-          "Errores del modelo elegido (`hibrido_lr`): " + "; ".join(
-              f"{n}: " + ", ".join(f"#{i} {e}→{p}" for i, e, p in detalle[("hibrido_lr", n)]) for n in ["prueba", "holdout"])]
+          f"Errores del modelo elegido (`{config.CLASIFICADOR}`): " + "; ".join(
+              f"{n}: " + ", ".join(f"#{i} {e}→{p}" for i, e, p in detalle[(config.CLASIFICADOR, n)]) for n in ["prueba", "holdout"])]
     return "\n".join(md)
 
 
@@ -303,22 +303,22 @@ def e4_respuestas():
                 if not s:
                     continue
             else:
-                respuesta.ABSTENCION_ACTIVA = cfg.get("abstencion", True)
+                config.ABSTENCION_ACTIVA = cfg.get("abstencion", True)
                 s, _ = correr_v2(casos, **{k: v for k, v in cfg.items() if k != "abstencion"})
-                respuesta.ABSTENCION_ACTIVA = True
+                config.ABSTENCION_ACTIVA = True
             n, r = evaluar_grounding(s, casos)
             filas.append([nombre, etiqueta, n, pct(r["fuentes"] / n), pct(r["negar"] / n), pct(r["abstener"] / n),
                           f"**{pct(r['todo'] / n)}**", r["niega_sin_saber"], r["precio_sin_respaldo"]])
-    original = respuesta.TAU
+    original = config.TAU
     for tau in [0.05, 0.10, 0.15, 0.20, 0.30, 0.40]:
-        respuesta.TAU = tau
+        config.TAU = tau
         fila = [tau]
         for nombre in ["prueba", "holdout", "ciegas"]:
             s, _ = correr_v2(CONJUNTOS[nombre])
             n, r = evaluar_grounding(s, CONJUNTOS[nombre])
             fila.append(pct(r["todo"] / n))
         sens.append(fila)
-    respuesta.TAU = original
+    config.TAU = original
     md = ["## E4 · Respuestas fundamentadas (Clases 06, 07, 10, 12)", "",
           "Solo consultas (menú/local) con etiqueta en `datos/etiquetas_grounding.json`. `fuentes` = menciona los hechos "
           "correctos; `negar` = dice que algo no existe cuando corresponde (carta/sucursales completas); `abstenerse` = dice "
@@ -326,7 +326,7 @@ def e4_respuestas():
           "NO existe cuando en realidad no se sabe (el error 'leve' de la V1). `$ sin respaldo` = montos que no son precios de la carta.",
           "", "**`ciegas` se escribió después de construir el módulo y nunca se usó para ajustarlo: es la medida más honesta.**", "",
           tabla(["Conjunto", "Sistema", "n", "fuentes", "negar", "abstenerse", "todo", "niega sin saber", "$ sin respaldo"], filas),
-          "", "### Sensibilidad al umbral de recuperación TAU (fijado en 0.15 antes de evaluar)", "",
+          "", f"### Sensibilidad al umbral de recuperación TAU (config: {config.TAU}, fijado antes de evaluar)", "",
           tabla(["TAU", "prueba (todo)", "holdout (todo)", "ciegas (todo)"], sens)]
     return "\n".join(md)
 

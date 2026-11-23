@@ -56,7 +56,7 @@ En la extracción de datos el problema principal es la fecha (18 de 24 bien). El
 
 ## Fase 2: explicación del código y versiones simplificadas
 
-Todo está en [`fase2/`](fase2/). El documento principal es [`fase2/EXPLICACION_FASE2.md`](fase2/EXPLICACION_FASE2.md): explica cada parte de la V1 con los contenidos del curso y la compara con su reemplazo clásico (TF-IDF, embeddings, regex, NER, autómata de diálogo, recuperación de hechos). Las tablas están en [`fase2/resultados/RESULTADOS.md`](fase2/resultados/RESULTADOS.md).
+Todo está en [`fase2/`](fase2/). El documento principal es [`fase2/EXPLICACION_FASE2.md`](fase2/EXPLICACION_FASE2.md): explica cada parte de la V1 con los contenidos del curso y la compara con su reemplazo clásico (TF-IDF, embeddings, regex, NER, autómata de diálogo, recuperación de hechos). Las tablas están en [`fase2/resultados/RESULTADOS.md`](fase2/resultados/RESULTADOS.md). Para revisar el código y los parámetros ajustables (todos en `fase2/config.py`), ver [`fase2/GUIA_REVISION.md`](fase2/GUIA_REVISION.md).
 
 ```bash
 pip install -r requirements.txt

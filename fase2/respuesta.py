@@ -6,7 +6,7 @@ medios de pago y un correo que no existen. Aquí la respuesta solo puede contene
 HECHOS de conocimiento.py, recuperados como en el RAG mínimo de la Clase 12:
 
   1. Retrieve: TF-IDF (con stemming) + similitud coseno entre la pregunta y
-     cada hecho (Clase 06). Solo se usan hechos sobre un umbral TAU.
+     cada hecho (Clase 06). Solo se usan hechos sobre un umbral (config.TAU).
   2. Augment: en vez de pasarle los hechos a un LLM, se insertan en una
      plantilla (no hay generación libre -> no hay alucinación posible).
   3. "Si no está, responde No lo sé" (Clase 10/12): las palabras de contenido
@@ -25,12 +25,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 import conocimiento as kb
+import config
 from extraccion import comunas_sin_local
 from preprocesamiento import analizar, normalizar, stem, tokenizar
 
-TAU = 0.15          # umbral de similitud fijado ANTES de evaluar (ver análisis de sensibilidad en E4)
-ABSTENCION_ACTIVA = True   # ablación E4: False = RAG ingenuo que siempre responde con lo más parecido
-MAX_HECHOS = 3
 GENERICAS = {"opcion", "opciones", "algo", "cosa", "cosas", "tipo", "favor", "dia", "dias", "semana",
              "gente", "vez", "alguna", "algun", "alguno", "mesa", "reserva", "nombre", "tal", "lugar",
              "precio", "precios", "local", "locales", "restaurante", "senor", "senora", "hola", "chile",
@@ -67,12 +65,12 @@ class Recuperador:
         self.vocab = {stem(t) for h in kb.HECHOS for t in tokenizar(h["indexar"] + " " + h["texto"])}
 
     def buscar(self, consulta: str, tau: float = None):
-        tau = TAU if tau is None else tau
+        tau = config.TAU if tau is None else tau
         sims = cosine_similarity(self.vec.transform([consulta]), self.M)[0]
         orden = sims.argsort()[::-1]
         mejor = sims[orden[0]]
-        return [(self.ids[i], float(sims[i])) for i in orden[:MAX_HECHOS]
-                if sims[i] >= tau and sims[i] >= 0.5 * mejor]
+        return [(self.ids[i], float(sims[i])) for i in orden[:config.MAX_HECHOS]
+                if sims[i] >= tau and sims[i] >= config.RATIO_MEJOR * mejor]
 
     def cubierto(self, palabra: str) -> bool:
         return stem(palabra) in self.vocab
@@ -124,7 +122,7 @@ def responder_consulta(texto: str, intencion: str, datos: dict, rec: Recuperador
                        referentes_previos=None, eliptica=False, mundo_cerrado_por_intencion=True):
     """Devuelve (respuesta, ids_de_hechos_usados). Los ids son la 'cita' de cada dato (Clase 12)."""
     t = normalizar(texto)
-    hechos = [h for h, _ in rec.buscar(texto, tau=None if ABSTENCION_ACTIVA else 0.0)]
+    hechos = [h for h, _ in rec.buscar(texto, tau=None if config.ABSTENCION_ACTIVA else 0.0)]
     sin_sustantivos = not any(x.pos_ in {"NOUN", "PROPN"} and normalizar(x.text) not in GENERICAS
                               for x in analizar(texto))
     # Resolución de referencias (Clase 07): "¿Y cuánto cuesta?" no nombra nada -> se usa lo último
@@ -151,7 +149,7 @@ def responder_consulta(texto: str, intencion: str, datos: dict, rec: Recuperador
     # fecha/hora/personas/nombre/sucursal ya se entendieron; la restricción NO se excluye: si la base
     # no la cubre ("sin lactosa"), hay que decir que no se sabe
     valores_slots = [str(v) for k, v in datos.items() if v is not None and k != "restriccion_alimentaria"]
-    faltantes = terminos_no_cubiertos(texto, rec, excluir=list(otras) + valores_slots) if ABSTENCION_ACTIVA else []
+    faltantes = terminos_no_cubiertos(texto, rec, excluir=list(otras) + valores_slots) if config.ABSTENCION_ACTIVA else []
     hay_plato = any(h.startswith("plato_") for h in hechos)
     negar = [p for p, prop in faltantes if mundo_cerrado_por_intencion and intencion == "consultar_menu"
              and not hay_plato and not prop]

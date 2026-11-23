@@ -33,6 +33,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import FeatureUnion, make_pipeline
 from sklearn.preprocessing import FunctionTransformer, Normalizer
 
+import config
 from preprocesamiento import analizar, lematizar, normalizar, stem
 
 INTENCIONES = ["hacer_reserva", "modificar_reserva", "cancelar_reserva", "consultar_menu",
@@ -122,11 +123,11 @@ def _pre(f):
 
 
 def construir(nombre: str):
-    lr = lambda: LogisticRegression(max_iter=3000, C=10)  # noqa: E731
+    lr = lambda: LogisticRegression(max_iter=config.LR_MAX_ITER, C=config.LR_C)  # noqa: E731
     if nombre == "reglas":
         return ClasificadorReglas()
     if nombre == "bow_nb":
-        return make_pipeline(_pre(normalizar), CountVectorizer(), MultinomialNB(alpha=0.5))
+        return make_pipeline(_pre(normalizar), CountVectorizer(), MultinomialNB(alpha=config.NB_ALPHA))
     if nombre == "tfidf_lr":
         return make_pipeline(_pre(normalizar), TfidfVectorizer(sublinear_tf=True), lr())
     if nombre == "tfidf_stem_lr":
@@ -135,18 +136,18 @@ def construir(nombre: str):
         return make_pipeline(_pre(lematizar), TfidfVectorizer(sublinear_tf=True), lr())
     if nombre == "tfidf_char_lr":
         return make_pipeline(_pre(normalizar),
-                             TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True), lr())
+                             TfidfVectorizer(analyzer="char_wb", ngram_range=config.CHAR_NGRAMAS, sublinear_tf=True), lr())
     if nombre == "tfidf_knn":
         return make_pipeline(_pre(stem), TfidfVectorizer(sublinear_tf=True),
-                             KNeighborsClassifier(n_neighbors=3, metric="cosine", weights="distance"))
+                             KNeighborsClassifier(n_neighbors=config.KNN_VECINOS, metric="cosine", weights="distance"))
     if nombre == "lsa_lr":
         return make_pipeline(_pre(stem), TfidfVectorizer(sublinear_tf=True),
-                             TruncatedSVD(n_components=60, random_state=0), Normalizer(), lr())
+                             TruncatedSVD(n_components=config.LSA_DIMENSIONES, random_state=config.SEMILLA), Normalizer(), lr())
     if nombre == "emb_lr":
         return make_pipeline(EmbeddingPromedio(), Normalizer(), lr())
     if nombre == "emb_knn":
         return make_pipeline(EmbeddingPromedio(),
-                             KNeighborsClassifier(n_neighbors=3, metric="cosine", weights="distance"))
+                             KNeighborsClassifier(n_neighbors=config.KNN_VECINOS, metric="cosine", weights="distance"))
     if nombre == "hibrido_lr":
         # Representación híbrida léxica + densa (Clase 06/12): TF-IDF con stemming
         # concatenado al promedio de embeddings.
@@ -163,7 +164,8 @@ MODELOS = ["reglas", "bow_nb", "tfidf_lr", "tfidf_stem_lr", "tfidf_lema_lr", "tf
 class Clasificador:
     """Envoltorio usado por el chatbot: entrena con el corpus y entrega (intención, confianza)."""
 
-    def __init__(self, nombre: str = "hibrido_lr"):  # elegido por validación cruzada (E1)
+    def __init__(self, nombre: str = None):
+        nombre = nombre or config.CLASIFICADOR   # elegido por validación cruzada (E1)
         self.nombre = nombre
         X, y = cargar_entrenamiento()
         self.modelo = construir(nombre).fit(X, y)

@@ -32,6 +32,7 @@ Gestor de diálogo de la Versión 2 — Clase 02 (autómatas) y Clase 07 (discur
 import re
 
 import conocimiento as kb
+import config
 from extraccion import CAMPOS, EXTRACTORES
 from guardrails import enmascarar_sensibles
 from intencion import CONSULTAS, TRANSACCIONALES, Clasificador
@@ -51,9 +52,6 @@ TRANSICIONES = {
 }
 MARCADOR = re.compile(r"^\W*(y|ah|oh|perdon|mejor|entonces|ya|ok|pero|bueno|al final)\b")
 ELIPSIS = re.compile(r"^\W*y\b")
-UMBRAL_CONFIANZA = 0.40
-UMBRAL_CAMBIO = 0.75      # para abandonar una transacción en curso se exige evidencia fuerte
-UMBRAL_SEGMENTO = 0.30    # con 7 clases, 0.30 ya es ~2 veces el azar (1/7)
 NOMBRE_CAMPO = {"fecha": "la fecha", "hora": "la hora", "cantidad_personas": "cuántas personas son",
                 "nombre_cliente": "el nombre para la reserva",
                 "sucursal": "la sucursal (Providencia o Ñuñoa)"}
@@ -94,10 +92,10 @@ def validar_politicas(d: dict):
 class Asistente:
     """Versión 2. Cada componente es configurable para los experimentos de ablación."""
 
-    def __init__(self, clasificador="hibrido_lr", extractor="hibrido", seguimiento=True,
+    def __init__(self, clasificador=None, extractor=None, seguimiento=True,
                  mundo_cerrado=True, recuperador=None, clf=None):
         self.clf = clf or Clasificador(clasificador)
-        self.extraer = EXTRACTORES[extractor]
+        self.extraer = EXTRACTORES[extractor or config.EXTRACTOR]
         self.seguimiento = seguimiento
         self.mundo_cerrado = mundo_cerrado
         self.rec = recuperador or Recuperador()
@@ -116,7 +114,7 @@ class Asistente:
         t = normalizar(texto)
         n_datos = sum(v is not None for v in datos.values())
         if self.estado == RECOLECTANDO and (n_datos or pred in TRANSACCIONALES) and (
-                pred not in TRANSACCIONALES or pred == self.intencion_activa or conf < UMBRAL_CAMBIO):
+                pred not in TRANSACCIONALES or pred == self.intencion_activa or conf < config.UMBRAL_CAMBIO):
             return self.intencion_activa                                   # slot filling
         if self.estado == REGISTRADA and n_datos and pred != "cancelar_reserva" and (
                 (MARCADOR.match(t) and not texto.strip().endswith("?"))
@@ -136,7 +134,7 @@ class Asistente:
             return self.clf.predecir(mensaje)
         completo = self.clf.predecir(mensaje)
         directivos = [c for c in (self.clf.predecir(s) for s in segmentos)
-                      if c[0] in TRANSACCIONALES and c[1] >= UMBRAL_SEGMENTO]
+                      if c[0] in TRANSACCIONALES and c[1] >= config.UMBRAL_SEGMENTO]
         if completo[0] in TRANSACCIONALES or not directivos:
             return completo
         return max(directivos, key=lambda c: c[1])
@@ -180,7 +178,7 @@ class Asistente:
         if error:
             return error, "rechazo"
         if intencion == "hacer_reserva":
-            faltan = [c for c in ["sucursal", "fecha", "hora", "cantidad_personas", "nombre_cliente"] if not d.get(c)]
+            faltan = [c for c in config.CAMPOS_RESERVA if not d.get(c)]
             aprox = bool(d.get("hora")) and ":" not in d["hora"]
             if aprox:
                 faltan.append("hora")
@@ -196,7 +194,7 @@ class Asistente:
             if not any(d.get(c) for c in ["fecha", "hora", "cantidad_personas", "sucursal", "restriccion_alimentaria"]):
                 return f"¿Qué quieres cambiar de la reserva a nombre de {d['nombre_cliente']}?", "incompleta"
             return self._registrar("modificacion", f"Registré tu solicitud de modificación: {resumen(d)}.")
-        faltan = [NOMBRE_CAMPO[c] for c in ["nombre_cliente", "fecha"] if not d.get(c)]
+        faltan = [NOMBRE_CAMPO[c] for c in config.CAMPOS_CANCELACION if not d.get(c)]
         if faltan:
             return "Para cancelar necesito " + " y ".join(faltan) + " de la reserva.", "incompleta"
         return self._registrar("cancelacion", f"Registré tu solicitud de cancelación: {resumen(d)}.")
