@@ -75,7 +75,9 @@ def resumen(d: dict) -> str:
     p = []
     if d.get("fecha"): p.append(d["fecha"])
     if d.get("hora"): p.append(f"a las {d['hora']}" if ":" in d["hora"] else f"({d['hora']})")
-    if d.get("cantidad_personas"): p.append(f"{d['cantidad_personas']} persona(s)")
+    if d.get("cantidad_personas"):
+        n = d["cantidad_personas"]
+        p.append(f"{n} persona" if str(n) == "1" else f"{n} personas")
     if d.get("sucursal"): p.append(f"sucursal {d['sucursal']}")
     if d.get("nombre_cliente"): p.append(f"a nombre de {d['nombre_cliente']}")
     if d.get("restriccion_alimentaria"): p.append(f"restricción: {d['restriccion_alimentaria']}")

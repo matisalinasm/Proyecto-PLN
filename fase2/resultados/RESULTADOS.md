@@ -1,6 +1,6 @@
 # Resultados de la Fase 2
 
-Generado por `python experimentos.py`. La V1 solo tiene salidas sobre las 50 conversaciones de prueba (`resultados_v1.json`); para sumarla en los otros conjuntos, correr `correr_llm.py` con Ollama.
+Generado por `python experimentos.py`. Las salidas de la V1 sobre las 50 conversaciones de prueba están en `../resultados_v1.json`; las de la V1 y la V1b en los demás conjuntos se generaron con `correr_llm.py` (gemma3:4b en Ollama) y están en `resultados/llm_*.json`.
 
 ## E1 · Intención (Clases 02, 06, 08)
 
