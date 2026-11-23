@@ -20,6 +20,7 @@ mensaje
   ├─ 1. guardrails.enmascarar_sensibles()   RUT/tarjetas -> [RUT], [TARJETA]                  (Clase 04)
   ├─ 2. extraccion.extraer_hibrido()        {fecha: viernes, cantidad_personas: 4, ...}       (Clases 04-06)
   ├─ 3. dialogo._clasificar()               "Hola" -> saludo · "quiero reservar…" -> reserva  (Clases 06-08)
+  │                                         "Hola, ¿tienen delivery?" -> gana la pregunta
   │                                         gana el acto directivo: hacer_reserva
   ├─ 4. dialogo._resolver_intencion()       ¿continúa algo en curso? ¿es una elipsis?          (Clase 07)
   │

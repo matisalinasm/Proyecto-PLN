@@ -204,6 +204,7 @@ La tabla `TRANSICIONES` de `dialogo.py` es la función de transición δ(estado,
 | Anáfora sin antecedente explícito | "¿Y cuánto cuesta?" después de "¿Tienen opciones veganas?" | Se usan los hechos de la respuesta anterior (los referentes del discurso) |
 | "a la misma hora" | después de un rechazo por lunes | El valor sigue en el estado |
 | Varios actos en un turno | "Hola, quiero reservar" (expresivo + directivo) | Se segmenta por puntuación; un acto directivo prevalece sobre el saludo |
+| Saludo + pregunta | "Hola, ¿tienen delivery?" o "Hola tienen delivery?" | El saludo inicial se separa aunque no haya coma. Si el mensaje parte con saludo o trae una pregunta, gana el segmento que no es social. Antes la V2 solo saludaba y dejaba la pregunta sin responder |
 
 | Conjunto | Sistema | Intención final | F1 datos | Conversaciones completas |
 |---|---|---|---|---|
@@ -331,11 +332,12 @@ La única "leve" de la V2 (#50) es honesta de reportar: dice "no tenemos sillas 
   - las regex y las reglas se escribieron mirando las 50 de prueba;
   - el módulo de respuestas se ajustó con preguntas de prueba y holdout (stopwords, gatillo de lugares, frases nominales);
   - las reglas de discurso se desarrollaron con el set multiturno;
-  - un error del holdout (#122, una despedida clasificada como consulta) motivó restringir la regla de segmentación.
+  - un error del holdout (#122, una despedida clasificada como consulta) motivó restringir la regla de segmentación;
+  - la regla de saludo + pregunta se agregó después, probando con frases escritas a mano. La primera versión rompía de nuevo el #122 del holdout y por eso se limitó a mensajes que parten con saludo o traen una pregunta. O sea, el holdout se volvió a mirar.
 
   Por eso **`ciegas` (15 consultas nunca usadas) y la validación cruzada son las medidas más limpias**, y las demás son optimistas.
 - **Conjuntos pequeños:** un caso equivale a 2–10 puntos porcentuales según el conjunto.
-- **Anotación manual de un solo revisor** para las respuestas inventadas. Lo ideal es que dos integrantes anoten por separado y se compare su acuerdo.
+- **Anotación manual** de las respuestas inventadas. La V1 la revisaron dos integrantes por separado y coincidieron en las 7 graves. Las diferencias (el caso 7 como acción falsa y los casos 20 y 24 como leves) se resolvieron juntando ambas revisiones. La V2 la revisó una sola persona.
 - **La V1 es una sola corrida** (temperatura 0.2, sin seed) y **no tiene resultados en holdout, multiturno ni ciegas.** La comparación más importante que falta es correr `correr_llm.py` (sección 7).
 - **Etiquetas discutibles del dataset original:** ¿"en la noche" es una hora? ¿la fecha de una modificación es la antigua o la nueva?
 - La V2 no sabe qué día es hoy: "reservar hoy" un lunes no se rechaza.
