@@ -1,0 +1,143 @@
+{
+ "_nota": "Consultas escritas DESPUÉS de construir respuesta.py y nunca usadas para ajustarlo. Miden la generalización del módulo de respuestas fundamentadas (el de prueba y holdout se usaron como ejemplos durante el desarrollo).",
+ "casos": [
+  {
+   "id": 401,
+   "texto": "¿Cuánto vale el mote con huesillo?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [
+    "plato_mote"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 402,
+   "texto": "¿A qué hora cierran?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [
+    "horario"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 403,
+   "texto": "¿Tienen algo para celíacos?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [
+    "plato_ensalada"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 404,
+   "texto": "¿Venden sushi?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  {
+   "id": 405,
+   "texto": "¿Tienen baño para discapacitados?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  {
+   "id": 406,
+   "texto": "¿El churrasco viene con papas fritas?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [
+    "plato_churrasco"
+   ],
+   "negar": false,
+   "abstenerse": true
+  },
+  {
+   "id": 407,
+   "texto": "¿Hay sucursal en Puente Alto?",
+   "intencion_esperada": "consultar_info_local",
+   "negar": true,
+   "abstenerse": false,
+   "todas": []
+  },
+  {
+   "id": 408,
+   "texto": "¿Hacen descuento a estudiantes?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  {
+   "id": 409,
+   "texto": "¿Qué bebidas tienen?",
+   "intencion_esperada": "consultar_menu",
+   "alguna_de": [
+    "plato_jugo",
+    "plato_mote",
+    "carta"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 410,
+   "texto": "¿Tienen lomo a lo pobre o pernil?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [],
+   "negar": true,
+   "abstenerse": false
+  },
+  {
+   "id": 411,
+   "texto": "¿Se puede celebrar un cumpleaños con torta propia?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  },
+  {
+   "id": 412,
+   "texto": "¿En qué calle está el local de Providencia?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [
+    "sucursal_providencia"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 413,
+   "texto": "¿Las empanadas son de queso también?",
+   "intencion_esperada": "consultar_menu",
+   "todas": [
+    "plato_empanada"
+   ],
+   "negar": false,
+   "abstenerse": true
+  },
+  {
+   "id": 414,
+   "texto": "¿Atienden los martes en la tarde?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [
+    "horario"
+   ],
+   "negar": false,
+   "abstenerse": false
+  },
+  {
+   "id": 415,
+   "texto": "¿Tienen música en vivo los viernes?",
+   "intencion_esperada": "consultar_info_local",
+   "todas": [],
+   "negar": false,
+   "abstenerse": true
+  }
+ ]
+}

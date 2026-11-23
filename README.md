@@ -33,7 +33,7 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 | Etapa | Estado |
 |---|---|
 | 1. Primera versión con IA, solo con prompt engineering | Lista |
-| 2. Explicar el código y comparar versiones simplificadas | En curso |
+| 2. Explicar el código y comparar versiones simplificadas | Versión V2 lista (ver `fase2/`); falta correr V1/V1b en los conjuntos nuevos |
 | 3. Repositorio con el historial de cambios | En curso |
 | 4. Presentación de 15 minutos | Pendiente |
 
@@ -42,14 +42,28 @@ python metricas.py v1       # calcular las 3 métricas a partir de esos resultad
 | Métrica | Resultado |
 |---|---|
 | Intenciones correctas | 46/50 (92%) |
-| Datos bien extraídos | 85/95 campos (90%) |
-| Conversaciones con alucinación | 10/50 (20%) |
+| Datos bien extraídos (comparación exacta) | 85/95 campos (90%) |
+| Conversaciones con alucinación | 12/50 (24%): 7 graves y 5 leves |
 | Alucinaciones en las trampas | 9/15 (60%) |
+| Acciones falsas ("ya cancelé tu reserva") | 6/50 |
 
 Lo que más falla es la alucinación. Aunque el prompt dice explícitamente "NO inventes", el modelo inventó sabores de jugo, precios de platos que no existen, un correo de contacto y medios de pago. También aceptó una reserva para 18 personas cuando el máximo es 12.
 
-Para contar las alucinaciones usamos un criterio estricto. Cuenta como alucinación todo lo que el bot afirma y no está en la información oficial, incluso cuando dice con seguridad que algo no existe (por ejemplo, "no tenemos estacionamiento") sin tener cómo saberlo. Usamos el mismo criterio para todas las versiones, para que la comparación sea justa.
+Para contar las alucinaciones usamos un criterio estricto. Cuenta como alucinación todo lo que el bot afirma y no está en la información oficial. Las separamos en dos tipos. Las **graves** inventan un dato o rompen una regla del local, como los precios inventados o la reserva para 18. Las **leves** afirman algo que la información oficial no respalda, como decir "no tenemos estacionamiento" sin tener cómo saberlo, o se contradicen. Usamos el mismo criterio para todas las versiones, para que la comparación sea justa.
 
-Aparte de eso encontramos otro problema. En 5 conversaciones el bot dice "tu reserva está hecha" o "ya cancelé tu reserva", pero no tiene ningún sistema de reservas detrás. No lo contamos como alucinación porque no inventa un dato del restaurante, pero le promete al cliente algo que no hizo.
+Aparte de eso encontramos otro problema. En 6 conversaciones el bot dice "tu reserva está hecha" o "ya cancelé tu reserva", pero no tiene ningún sistema de reservas detrás. No lo contamos como alucinación porque no inventa un dato del restaurante, pero le promete al cliente algo que no hizo.
 
-En la extracción de datos el problema principal es la fecha (18 de 24 bien). El modelo a veces no la guarda, sobre todo en cancelaciones y modificaciones. Además inventó 11 claves que no están en el esquema, como `plato` o `consulta`.
+En la extracción de datos el problema principal es la fecha (18 de 24 bien). Esta cifra compara los valores tal cual; en la fase 2 se normalizan antes de comparar ("este domingo" = "domingo"), por eso ahí la V1 sube a un F1 de 0,95. El modelo a veces no la guarda, sobre todo en cancelaciones y modificaciones. Además inventó 11 claves que no están en el esquema, como `plato` o `consulta`.
+
+## Fase 2: explicación del código y versiones simplificadas
+
+Todo está en [`fase2/`](fase2/). El documento principal es [`fase2/EXPLICACION_FASE2.md`](fase2/EXPLICACION_FASE2.md): explica cada parte de la V1 con los contenidos del curso y la compara con su reemplazo clásico (TF-IDF, embeddings, regex, NER, autómata de diálogo, recuperación de hechos). Las tablas están en [`fase2/resultados/RESULTADOS.md`](fase2/resultados/RESULTADOS.md). Para revisar el código y los parámetros ajustables (todos en `fase2/config.py`), ver [`fase2/GUIA_REVISION.md`](fase2/GUIA_REVISION.md).
+
+```bash
+pip install -r requirements.txt
+python -m spacy download es_core_news_md
+cd fase2
+python Version2.py --debug       # chat de la V2 (sin LLM)
+python experimentos.py           # regenera todas las tablas
+python correr_llm.py v1b todos   # V1 con prompt mejorado (requiere Ollama)
+```

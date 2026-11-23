@@ -1,1 +1,6 @@
 ollama
+scikit-learn
+spacy>=3.7
+nltk
+numpy
+# Modelo de spaCy en español (Fase 2):  python -m spacy download es_core_news_md
