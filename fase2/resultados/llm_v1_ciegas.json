@@ -1,0 +1,141 @@
+[
+  {
+    "id": 401,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "plato": "mote con huesillo"
+    },
+    "respuesta": "El mote con huesillo cuesta $3.000.",
+    "latencia_s": 0.71,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 402,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "consulta": "¿A qué hora cierran?"
+    },
+    "respuesta": "Cerramos a las 23:00 horas, de martes a domingo.",
+    "latencia_s": 0.78,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 403,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "restriccion_alimentaria": "celíaco"
+    },
+    "respuesta": "¡Hola! Sí, tenemos una Ensalada Chilena que es una opción vegana y sin gluten, por lo que puede ser una buena alternativa para personas con celiaquía. ¿Te gustaría saber más sobre ella?",
+    "latencia_s": 1.12,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 404,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, en La Picada de Lang-Chi nos especializamos en la deliciosa comida tradicional chilena como pastel de choclo, cazuela y churrasco. No ofrecemos sushi en nuestro menú.",
+    "latencia_s": 1.01,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 405,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "consulta": "baño para discapacitados"
+    },
+    "respuesta": "¡Hola! Lamentablemente, en este momento no contamos con baño para personas con discapacidad en nuestras sucursales. Nos esforzamos por mejorar y agradecemos tu comentario.",
+    "latencia_s": 0.97,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 406,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "plato": "Churrasco italiano"
+    },
+    "respuesta": "¡Hola! El churrasco italiano viene solo con la carne, no incluye papas fritas. Tenemos una excelente opción para acompañarlo, como una ensalada chilena o mote con huesillo. ¿Te gustaría saber más sobre alguna de ellas?",
+    "latencia_s": 1.1,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 407,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "sucursal": null
+    },
+    "respuesta": "¡Hola! Lamentablemente, actualmente solo tenemos sucursales en Providencia y Ñuñoa. ¿Te gustaría saber algo más sobre alguna de ellas?",
+    "latencia_s": 0.87,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 408,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, en La Picada de Lang-Chi no ofrecemos descuentos especiales para estudiantes. Pero te garantizamos un excelente sabor en cada plato.",
+    "latencia_s": 0.83,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 409,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Claro! Tenemos jugos naturales a $2.500. ¿Algo más que te interese del menú?",
+    "latencia_s": 0.76,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 410,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, en La Picada de Lang-Chi no ofrecemos lomo a lo pobre ni pernil en nuestro menú. Tenemos pastel de choclo, cazuela de vacuno, churrasco italiano, empanada de pino, ensalada chilena, mote con huesillo y jugos naturales. ¿Te gustaría saber algo más sobre alguno de estos platos?",
+    "latencia_s": 1.32,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 411,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, no ofrecemos la posibilidad de traer tortas propias a nuestro restaurante. Nos especializamos en ofrecer una experiencia culinaria completa con nuestros platos tradicionales chilenos. ¡Pero podemos hacer que tu cumpleaños sea aún más especial con nuestros deliciosos pasteles de choclo, cazuela o cualquier otra cosa de nuestra carta!",
+    "latencia_s": 1.22,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 412,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "sucursal": "Providencia",
+      "respuesta": "Nuestro local de Providencia está ubicado en Av. Nueva Providencia 2150."
+    },
+    "respuesta": "",
+    "latencia_s": 0.83,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 413,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Hola! Sí, nuestras empanadas de pino son la opción tradicional. No ofrecemos empanadas de queso, pero tenemos otras opciones deliciosas en nuestro menú.",
+    "latencia_s": 0.88,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 414,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "consulta": "¿Atienden los martes en la tarde?"
+    },
+    "respuesta": "¡Hola! Sí, claro que atendemos los martes en la tarde. Nuestro horario es de 12:30 a 23:00 hrs.",
+    "latencia_s": 0.93,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 415,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {},
+    "respuesta": "¡Hola! Lamentablemente, no ofrecemos música en vivo los viernes. Nos alegra que te interese nuestro restaurante. ¿En qué puedo ayudarte?",
+    "latencia_s": 0.74,
+    "problemas_guardrail": []
+  }
+]

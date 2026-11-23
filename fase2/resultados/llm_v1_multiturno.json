@@ -1,0 +1,130 @@
+[
+  {
+    "id": 201,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "sucursal": "Providencia",
+      "fecha": "viernes",
+      "hora": "20:30",
+      "cantidad_personas": 5,
+      "nombre_cliente": "Ignacia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Estupendo, Ignacia! La reserva está confirmada en Providencia para el viernes a las 20:30 para 5 personas. ¡Esperamos tu visita!",
+    "latencia_s": 1.37,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 202,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "cantidad_personas": 6
+    },
+    "respuesta": "¡Entendido! Ya ajusté la reserva para 6 personas en Ñuñoa para el sábado a las 13:00. ¿Todo correcto?",
+    "latencia_s": 1.18,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 203,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "plato": "pastel de choclo"
+    },
+    "respuesta": "El pastel de choclo cuesta $9.500.",
+    "latencia_s": 0.62,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 204,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "sucursal": "Ñuñoa"
+    },
+    "respuesta": "La sucursal de Ñuñoa está ubicada en Av. Irarrázaval 3400.",
+    "latencia_s": 0.78,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 205,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {},
+    "respuesta": "El lunes estamos cerrado.",
+    "latencia_s": 0.59,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 206,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": "21:00",
+      "cantidad_personas": 3,
+      "sucursal": "Ñuñoa",
+      "nombre_cliente": "Joaquín"
+    },
+    "respuesta": "¡Perfecto, Joaquín! La reserva está confirmada para ti y tus acompañantes en la sucursal de Ñuñoa a las 21:00. ¡Te esperamos!",
+    "latencia_s": 1.16,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 207,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "nombre_cliente": "Felipe",
+      "fecha": "mañana"
+    },
+    "respuesta": "Perfecto, Felipe. ¿Y a qué hora era la reserva para mañana?",
+    "latencia_s": 0.73,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 208,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "nombre_cliente": "Marta",
+      "restriccion_alimentaria": "celíaca"
+    },
+    "respuesta": "¡Entendido, Marta! Tenemos en cuenta que una de las dos es celíaca. Confirmamos la reserva para 2 personas en Providencia el domingo a las 14:00. ¿Algo más que necesites?",
+    "latencia_s": 1.18,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 209,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "martes",
+      "hora": "20:00",
+      "cantidad_personas": 2,
+      "sucursal": "Ñuñoa"
+    },
+    "respuesta": "¡Perfecto! Para el martes a las 20:00 para 2 personas en nuestra sucursal de Ñuñoa, ¿podrías proporcionarme tu nombre, por favor?",
+    "latencia_s": 1.17,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 210,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "cantidad_personas": 12
+    },
+    "respuesta": "¡Perfecto! Ya ajustamos la reserva a 12 personas. ¿En qué día y hora te gustaría reservar en Providencia?",
+    "latencia_s": 0.93,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 211,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {},
+    "respuesta": "La ensalada chilena (opción vegana y sin gluten) cuesta $4.200.",
+    "latencia_s": 0.82,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 212,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {},
+    "respuesta": "Entendido. Cambiando la reserva a las 22:00. ¿Para cuántas personas sería?",
+    "latencia_s": 0.83,
+    "problemas_guardrail": []
+  }
+]

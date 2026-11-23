@@ -1,0 +1,377 @@
+[
+  {
+    "id": 101,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "mañana",
+      "hora": "20:00",
+      "cantidad_personas": 3,
+      "nombre_cliente": "Ignacio",
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud",
+    "latencia_s": 1.0,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 102,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": "13:15",
+      "cantidad_personas": 4,
+      "nombre_cliente": "Constanza",
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud",
+    "latencia_s": 1.06,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 103,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": "21:00",
+      "cantidad_personas": 9,
+      "nombre_cliente": "Tomás",
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 1.09,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 104,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "domingo",
+      "hora": "14 hrs",
+      "cantidad_personas": 2,
+      "nombre_cliente": "Paula",
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 1.04,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 105,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": null,
+      "cantidad_personas": 15,
+      "nombre_cliente": null,
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud. ¿A qué hora te gustaría reservar?",
+    "latencia_s": 1.07,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 106,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "lunes",
+      "hora": "13:00",
+      "cantidad_personas": 2,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información. Lamentablemente, estamos cerrados los lunes.",
+    "latencia_s": 1.12,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 107,
+    "intencion": "modificar_reserva",
+    "datos_extraidos": {
+      "fecha": "mañana",
+      "hora": "21:30",
+      "cantidad_personas": null,
+      "nombre_cliente": "Ignacio",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud.",
+    "latencia_s": 0.97,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 108,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "jueves",
+      "hora": null,
+      "cantidad_personas": 6,
+      "nombre_cliente": "Constanza",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 0.92,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 109,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "fecha": "domingo",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": "Paula",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 0.87,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 110,
+    "intencion": "cancelar_reserva",
+    "datos_extraidos": {
+      "fecha": "sábado",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": "Tomás",
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Registré tu solicitud de cancelación para el sábado a nombre de Tomás. ¿Necesitas algo más?",
+    "latencia_s": 1.04,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 111,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Para almorzar, te recomiendo nuestro pastel de choclo o la cazuela de vacuno, ¡son clásicos de La Picada de Lang-Chi!",
+    "latencia_s": 1.11,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 112,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "El churrasco italiano está a $7.800.",
+    "latencia_s": 0.86,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 113,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": "vegetariano"
+    },
+    "respuesta": "Tenemos pastel de choclo, cazuela de vacuno (sin carne), empanada de pino y ensalada chilena (vegana y sin gluten).",
+    "latencia_s": 1.11,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 114,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tenemos sopaipillas pasadas ni porotos con riendas en nuestra carta.",
+    "latencia_s": 0.9,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 115,
+    "intencion": "consultar_menu",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información. La empanada de pino está en nuestra carta por $2.800.",
+    "latencia_s": 0.98,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 116,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": "domingo",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Estamos abiertos hasta las 23:00 horas el domingo.",
+    "latencia_s": 0.96,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 117,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": "Ñuñoa",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "La sucursal de Ñuñoa está en Av. Irarrázaval 3400.",
+    "latencia_s": 1.06,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 118,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.84,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 119,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.84,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 120,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.84,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 121,
+    "intencion": "saludo_despedida",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Wena! ¿En qué puedo ayudarte?",
+    "latencia_s": 0.89,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 122,
+    "intencion": "saludo_despedida",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "¡Que estés bien también!",
+    "latencia_s": 0.83,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 123,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.85,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 124,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.86,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 125,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.86,
+    "problemas_guardrail": []
+  }
+]

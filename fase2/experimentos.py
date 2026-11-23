@@ -240,10 +240,15 @@ def e3_dialogo():
                             all(norm_valor(k, c["datos_esperados"].get(k)) == norm_valor(k, s[c["id"]]["datos_extraidos"].get(k))
                                 for k in CAMPOS) for c in casos)
             filas.append([nombre, etiqueta, pct(m["acc"]), dec(m["f1_datos"]), f"{completas}/{len(casos)}"])
-        llm = salidas_llm("v1", "multiturno") if casos is MULTI else None
-        if llm:
-            m = metricas(llm, casos)
-            filas.append([nombre, "LLM V1 (historial)", pct(m["acc"]), dec(m["f1_datos"]), "—"])
+        for v, et in [("v1", "LLM V1 (historial)"), ("v1b", "LLM V1b (historial)")]:
+            llm = salidas_llm(v, "multiturno") if casos is MULTI else None
+            if llm:
+                m = metricas(llm, casos)
+                completas = sum(llm[c["id"]]["intencion"] == c["intencion_esperada"] and
+                                all(norm_valor(k, c["datos_esperados"].get(k)) ==
+                                    norm_valor(k, (llm[c["id"]]["datos_extraidos"] or {}).get(k)) for k in CAMPOS)
+                                for c in casos)
+                filas.append([nombre, et, pct(m["acc"]), dec(m["f1_datos"]), f"{completas}/{len(casos)}"])
     s, _ = correr_v2(MULTI)
     fallos = [f"#{c['id']} ({c['fenomeno']}): esperada {c['intencion_esperada']}, obtenida {s[c['id']]['intencion']}"
               for c in MULTI if s[c["id"]]["intencion"] != c["intencion_esperada"]]

@@ -19,7 +19,7 @@ Cada modelo clasifica el primer mensaje de cada conversación. `CV` = F1-macro c
 | emb_lr | 0.68 | 84% | 0.78 | 68% | 0.69 |
 | emb_knn | 0.57 | 52% | 0.48 | 60% | 0.52 |
 | hibrido_lr | 0.72 | 94% | 0.91 | 88% | 0.85 |
-| **LLM V1 (gemma3:4b)** | — | 92% | 0.90 | — | — |
+| **LLM V1 (gemma3:4b)** | — | 92% | 0.90 | 80% | 0.73 |
 
 Errores del modelo elegido (`hibrido_lr`): prueba: #16 cancelar_reserva→modificar_reserva, #18 cancelar_reserva→hacer_reserva, #19 cancelar_reserva→modificar_reserva; holdout: #110 cancelar_reserva→saludo_despedida, #118 consultar_info_local→fuera_de_dominio, #125 fuera_de_dominio→consultar_info_local
 
@@ -33,6 +33,7 @@ F1 por campo después de normalizar valores ('este domingo' = 'domingo', '14:00 
 | prueba | regex | 0.99 | 0.98 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
 | prueba | ner_spacy | 0.97 | 0.98 | 1.00 | 1.00 | 0.88 | 1.00 | 1.00 | 0 |
 | prueba | hibrido | 0.99 | 0.98 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
+| holdout | LLM V1 | 0.97 | 0.90 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 4 |
 | holdout | regex | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
 | holdout | ner_spacy | 0.97 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 1.00 | 0 |
 | holdout | hibrido | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
@@ -53,6 +54,8 @@ F1 por campo después de normalizar valores ('este domingo' = 'domingo', '14:00 
 |---|---|---|---|---|
 | multiturno (desarrollo) | sin estado (cada turno aislado) | 17% | 0.45 | 2/12 |
 | multiturno (desarrollo) | autómata + discurso (V2) | 92% | 1.00 | 11/12 |
+| multiturno (desarrollo) | LLM V1 (historial) | 92% | 0.76 | 7/12 |
+| multiturno (desarrollo) | LLM V1b (historial) | 75% | 0.91 | 8/12 |
 | multiturno de prueba+holdout | sin estado (cada turno aislado) | 25% | 0.69 | 1/4 |
 | multiturno de prueba+holdout | autómata + discurso (V2) | 100% | 1.00 | 4/4 |
 
@@ -67,15 +70,22 @@ Solo consultas (menú/local) con etiqueta en `datos/etiquetas_grounding.json`. `
 | Conjunto | Sistema | n | fuentes | negar | abstenerse | todo | niega sin saber | $ sin respaldo |
 |---|---|---|---|---|---|---|---|---|
 | prueba | LLM V1 | 22 | 100% | 95% | 64% | **59%** | 6 | 1 |
+| prueba | LLM V1b (prompt mejorado) | 22 | 95% | 86% | 91% | **73%** | 1 | 0 |
 | prueba | V2 completa | 22 | 100% | 95% | 95% | **91%** | 0 | 0 |
 | prueba | V2 sin 'No lo sé' (solo hechos recuperados) | 22 | 100% | 91% | 64% | **59%** | 3 | 0 |
 | prueba | V2 sin mundo cerrado (siempre se abstiene) | 22 | 100% | 86% | 100% | **86%** | 0 | 0 |
+| holdout | LLM V1 | 10 | 90% | 90% | 80% | **60%** | 0 | 0 |
+| holdout | LLM V1b (prompt mejorado) | 10 | 90% | 90% | 100% | **80%** | 0 | 0 |
 | holdout | V2 completa | 10 | 100% | 100% | 90% | **90%** | 0 | 0 |
 | holdout | V2 sin 'No lo sé' (solo hechos recuperados) | 10 | 100% | 100% | 70% | **70%** | 1 | 0 |
 | holdout | V2 sin mundo cerrado (siempre se abstiene) | 10 | 100% | 90% | 90% | **80%** | 0 | 0 |
+| multiturno | LLM V1 | 4 | 75% | 100% | 100% | **75%** | 0 | 0 |
+| multiturno | LLM V1b (prompt mejorado) | 4 | 75% | 100% | 100% | **75%** | 0 | 0 |
 | multiturno | V2 completa | 4 | 100% | 100% | 100% | **100%** | 0 | 0 |
 | multiturno | V2 sin 'No lo sé' (solo hechos recuperados) | 4 | 100% | 100% | 100% | **100%** | 0 | 0 |
 | multiturno | V2 sin mundo cerrado (siempre se abstiene) | 4 | 100% | 100% | 100% | **100%** | 0 | 0 |
+| ciegas | LLM V1 | 15 | 87% | 93% | 60% | **40%** | 5 | 0 |
+| ciegas | LLM V1b (prompt mejorado) | 15 | 87% | 93% | 93% | **73%** | 0 | 0 |
 | ciegas | V2 completa | 15 | 100% | 100% | 87% | **87%** | 1 | 0 |
 | ciegas | V2 sin 'No lo sé' (solo hechos recuperados) | 15 | 100% | 100% | 60% | **60%** | 3 | 0 |
 | ciegas | V2 sin mundo cerrado (siempre se abstiene) | 15 | 100% | 87% | 93% | **80%** | 0 | 0 |
@@ -98,7 +108,10 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 | Conjunto | Sistema | Intención acc | Intención F1 | F1 datos | fuera esq. | grave | leve | acción falsa | sin anotar |
 |---|---|---|---|---|---|---|---|---|---|
 | prueba | LLM V1 (cruda) | 92% | 0.90 | 0.95 | 7 | 7 | 5 | 6 | 0 |
+| prueba | LLM V1b (prompt mejorado) | 92% | 0.91 | 0.97 | 0 | 4 | 1 | 20 | 0 |
 | prueba | V2 (sin LLM) | 92% | 0.90 | 0.99 | 0 | 0 | 1 | 0 | 0 |
+| holdout | LLM V1 (cruda) | 80% | 0.73 | 0.97 | 4 | 4 | 2 | 5 | 0 |
+| holdout | LLM V1b (prompt mejorado) | 92% | 0.91 | 1.00 | 0 | 2 | 0 | 8 | 0 |
 | holdout | V2 (sin LLM) | 92% | 0.92 | 1.00 | 0 | 0 | 0 | 0 | 0 |
 
 ### Prompt injection y datos sensibles (`datos/casos_injection.json`)
@@ -106,12 +119,15 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 | Sistema | Casos resistidos |
 |---|---|
 | V2 (sin LLM) | 5/5 |
+| LLM V1b | 3/5 |
 
 ### Eficiencia (Clase 12)
 
 | Sistema | Latencia media por turno | p95 | Modelo |
 |---|---|---|---|
-| V2 (sin LLM) | 11 ms | 18 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
+| V2 (sin LLM) | 15 ms | 25 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
+| LLM V1 (holdout) | 2.0 s | 6.4 s | gemma3:4b cuantizado (GGUF 4 bits en Ollama) |
+| LLM V1B (holdout) | 1.0 s | 1.1 s | gemma3:4b cuantizado (GGUF 4 bits en Ollama) |
 
 ## E6 · Ablación: qué aporta cada componente
 

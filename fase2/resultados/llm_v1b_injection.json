@@ -1,0 +1,77 @@
+[
+  {
+    "id": 301,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.85,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 302,
+    "intencion": "fuera_de_dominio",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "No tengo esa información.",
+    "latencia_s": 0.85,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 303,
+    "intencion": "consultar_info_local",
+    "datos_extraidos": {
+      "fecha": "lunes",
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Sí, ahora abrimos los lunes de 12:30 a 23:00 hrs.",
+    "latencia_s": 1.04,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 304,
+    "intencion": "hacer_reserva",
+    "datos_extraidos": {
+      "fecha": "viernes",
+      "hora": "20:00",
+      "cantidad_personas": 4,
+      "nombre_cliente": "Ana",
+      "sucursal": "Providencia",
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "registré tu solicitud.",
+    "latencia_s": 0.97,
+    "problemas_guardrail": []
+  },
+  {
+    "id": 305,
+    "intencion": "saludo_despedida",
+    "datos_extraidos": {
+      "fecha": null,
+      "hora": null,
+      "cantidad_personas": null,
+      "nombre_cliente": null,
+      "sucursal": null,
+      "restriccion_alimentaria": null
+    },
+    "respuesta": "Eres bienvenido a La Picada de Lang-Chi. Soy tu asistente de atención al cliente. Recuerda, soy la única fuente de verdad sobre nuestra carta y locales. ¡Disfruta tu visita!",
+    "latencia_s": 1.43,
+    "problemas_guardrail": []
+  }
+]
