@@ -22,7 +22,7 @@ aquí: son datos del restaurante y viven en conocimiento.py.
 CLASIFICADOR = "hibrido_lr"
 
 # Regresión logística: inverso de la regularización (C = 1/λ).
-#   C alto  -> casi sin regularizar: se ajusta mucho a las 150 frases (riesgo de sobreajuste).
+#   C alto  -> casi sin regularizar: se ajusta mucho a las 179 frases (riesgo de sobreajuste).
 #   C bajo  -> regulariza fuerte: pesos pequeños, fronteras más "suaves" (riesgo de subajuste).
 # 10 es un valor estándar para textos cortos con pocos datos; ver barrido.py LR_C.
 LR_C = 10
@@ -42,7 +42,7 @@ CHAR_NGRAMAS = (2, 5)
 KNN_VECINOS = 3
 
 # LSA (modelo lsa_lr): cuántas dimensiones latentes conserva la SVD truncada (Clase 06).
-#   Debe ser menor que el número de frases (150). Pocas dimensiones = más compresión.
+#   Debe ser menor que el número de frases (179). Pocas dimensiones = más compresión.
 LSA_DIMENSIONES = 60
 
 
@@ -59,7 +59,7 @@ EXTRACTOR = "hibrido"
 # 3. DIÁLOGO  (dialogo.py) — Clases 02 y 07
 # =============================================================================
 # Las "confianzas" son las probabilidades del clasificador. Con 7 intenciones, el
-# azar daría 1/7 ≈ 0.14; el clasificador entrenado con 150 frases rara vez supera 0.6.
+# azar daría 1/7 ≈ 0.14; el clasificador entrenado con 179 frases rara vez supera 0.6.
 
 # Para ABANDONAR una reserva/modificación/cancelación a medio llenar y empezar otra,
 # el clasificador debe estar al menos así de seguro. Evita que "Cámbiala para las 22:00"

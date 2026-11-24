@@ -13,7 +13,7 @@ La V1 (`../Version1.py`, `../Evaluar_V1.py`, `../resultados_v1.json`) **no se mo
 
 | Pieza de la V1 (todo lo hacía gemma3:4b) | Concepto del curso | Reemplazo clásico (V2) | Resultado principal |
 |---|---|---|---|
-| Detectar la intención | Actos de habla (C07), BoW/TF-IDF/LSA (C06), embeddings (C08), stemming (C02) | 11 clasificadores; gana **TF-IDF + embeddings** (elegido por validación cruzada) | Igual al LLM en prueba (92%); con frases nuevas (holdout) 92% vs 80% del LLM |
+| Detectar la intención | Actos de habla (C07), BoW/TF-IDF/LSA (C06), embeddings (C08), stemming (C02) | 11 clasificadores; gana **TF-IDF + embeddings** (elegido por validación cruzada) | En prueba 94% vs 92% del LLM; con frases nuevas (holdout) 92% vs 80% del LLM |
 | Extraer los datos | Extracción de información con regex (C04), NER (C05), WSD (C06) | Regex + NER de spaCy como respaldo | F1 0.99 vs 0.95 del LLM; 0 claves inventadas (LLM: 7) |
 | Recordar la conversación | Autómatas (C02), referencias y elipsis (C07) | Autómata de estados + resolución de referencias | Conversaciones largas completas: 11/12 (LLM: 7/12) |
 | Aplicar reglas del local | Verificar condiciones (C10) | Validación en código | Política garantizada (el LLM aceptó 18 personas; con prompt mejorado "registró" un lunes y las 00:30) |
@@ -128,32 +128,34 @@ La anotación completa está en `datos/anotacion_alucinaciones_v1.json`. La revi
 
 **Concepto.** La intención es el **acto de habla** del cliente (Clase 07). Reservar o cancelar son *directivos* (pedir que el local haga algo), consultar es un *directivo de pregunta* y saludar es *expresivo*. Clasificar intenciones es clasificar actos de habla, y la Clase 07 propone justo eso: "un clasificador de actos de habla simple y barato puede filtrar o enrutar mensajes antes de gastar una llamada completa al LLM".
 
-**Cómo se eligió el modelo (Clase 11, errores comunes).** Todos se entrenan con `datos/entrenamiento_intenciones.json` (150 frases escritas aparte). El ganador se eligió con **validación cruzada sobre ese corpus**, no mirando la prueba. Así se evita el *data leakage*, el error de "evaluar solo en train" de la Clase 11.
+**Cómo se eligió el modelo (Clase 11, errores comunes).** Todos se entrenan con `datos/entrenamiento_intenciones.json` (179 frases escritas aparte). El ganador se eligió con **validación cruzada sobre ese corpus**, no mirando la prueba. Así se evita el *data leakage*, el error de "evaluar solo en train" de la Clase 11.
 
 | Modelo | Clase | CV F1 | Prueba acc | Holdout acc | Holdout F1 |
 |---|---|---|---|---|---|
-| reglas (palabras clave) | 01 (ELIZA) | 0.80* | **100%** | **48%** | 0.47 |
-| Bag-of-Words + Naive Bayes | 06 | 0.58 | 82% | 80% | 0.74 |
-| TF-IDF + Reg. logística | 06 | 0.58 | 90% | 72% | 0.64 |
-| TF-IDF + stemming | 02, 06 | 0.65 | 94% | 80% | 0.70 |
-| TF-IDF + lematización | 02, 06 | 0.57 | 90% | 72% | 0.64 |
-| TF-IDF n-gramas de caracteres | 02, 06 | 0.61 | 88% | 84% | 0.82 |
-| TF-IDF + vecino más cercano (coseno) | 06 | 0.54 | 84% | 68% | 0.62 |
-| LSA (SVD, 60 dim.) + Reg. logística | 06 | 0.62 | 84% | 68% | 0.62 |
-| Promedio de embeddings + Reg. logística | 08 | 0.68 | 84% | 68% | 0.69 |
-| Promedio de embeddings + coseno kNN | 08 | 0.57 | 52% | 60% | 0.52 |
-| **TF-IDF (stem) + embeddings** | 06, 08, 12 | **0.72** | **94%** | **88%** | **0.85** |
+| reglas (palabras clave) | 01 (ELIZA) | 0.81* | **100%** | **48%** | 0.47 |
+| Bag-of-Words + Naive Bayes | 06 | 0.55 | 84% | 84% | 0.78 |
+| TF-IDF + Reg. logística | 06 | 0.60 | 94% | 72% | 0.64 |
+| TF-IDF + stemming | 02, 06 | 0.68 | 94% | 76% | 0.68 |
+| TF-IDF + lematización | 02, 06 | 0.64 | 88% | 64% | 0.57 |
+| TF-IDF n-gramas de caracteres | 02, 06 | 0.63 | 88% | 76% | 0.74 |
+| TF-IDF + vecino más cercano (coseno) | 06 | 0.61 | 86% | 64% | 0.55 |
+| LSA (SVD, 60 dim.) + Reg. logística | 06 | 0.60 | 86% | 72% | 0.66 |
+| Promedio de embeddings + Reg. logística | 08 | 0.64 | 84% | 64% | 0.65 |
+| Promedio de embeddings + coseno kNN | 08 | 0.53 | 54% | 56% | 0.54 |
+| **TF-IDF (stem) + embeddings** | 06, 08, 12 | **0.70** | **96%** | **92%** | **0.92** |
 | LLM V1 (gemma3:4b) | 09, 10 | — | 92% | 80% | 0.73 |
 
 \* Las reglas no se entrenan: su "CV" es su desempeño directo sobre el corpus.
 
+**Corpus equilibrado.** El corpus tenía 150 frases. Probando la interfaz de chat, "Dame la carta" salía como *fuera de dominio* con 77% de confianza. La causa: "dame" aparecía **solo** en un ejemplo fuera de dominio ("dame la receta de las empanadas"), y el clasificador aprendió la correlación falsa "dame = fuera de dominio". Es un **sesgo de los datos**, no de la técnica. Se agregaron 10 frases imperativas ("dame la carta", "pásame el horario", "dame una mesa para el jueves"…) en las intenciones que corresponden. Después, en otra prueba, el mensaje suelto "reserva" salía como *cancelar* (y "quiero reservar" no lograba sacar al bot de esa tarea): el corpus casi no tenía mensajes de una o dos palabras. Se agregaron 12 frases cortas ("reservar", "reserva", "carta", "horario", "anular"…) y una regla de diálogo: si la tarea en curso todavía no tiene ningún dato, un pedido explícito de otra transacción cambia de tarea sin exigir `UMBRAL_CAMBIO`. El modelo elegido no cambia; la tabla muestra los valores con el corpus final de 179 frases. Un efecto honesto de reportar: la CV bajó (0.75 → 0.70) porque las frases cortas son más difíciles de clasificar, pero la prueba subió (94% → 96%), el holdout también (88% → 92%) y el sistema completo mejoró en prueba (92% → 94%). Por último se agregaron 7 frases más encontradas probando: comentarios sociales ("qué rico", "qué bueno") y la primera persona plural ("reservemos").
+
 **Qué muestra la tabla:**
 1. **Las reglas son el caso de libro del sobreajuste.** Se escribieron mirando las 50 de prueba (100%) y con frases nuevas caen a **48%**: memorizan el vocabulario del set de prueba.
-2. **Los embeddings generalizan mejor que contar palabras** con tan pocos datos (CV 0.68 vs 0.58). Capturan que "apartar" ≈ "reservar" aunque nunca se vieran juntas (Clase 08: palabras similares quedan cerca en el espacio).
-3. **Lo léxico y lo denso fallan en casos distintos**, como dice la Clase 12 sobre búsqueda híbrida. Concatenar TF-IDF y embeddings da el mejor modelo (CV 0.72) y es el único que se mantiene alto en el holdout (88%). La validación cruzada eligió el mismo modelo que habría elegido el holdout: la selección fue honesta.
-4. **La lematización no ayudó** (0.57). El lematizador de spaCy falla justo con los verbos más típicos de un cliente, los que llevan pronombre pegado (enclíticos): "resérvame" → *reservamir*, y "agéndame" y "cancélala" quedan sin lematizar. El stemming, que solo corta sufijos, los deja mejor ("reserv", "cancel").
-5. **LSA no aporta con 150 frases.** La SVD necesita un corpus grande para encontrar temas latentes (en la Clase 06 el ejemplo funciona porque los temas están perfectamente separados).
-6. **El clasificador clásico iguala al LLM en la prueba (92–94%) y le gana con frases nuevas (88% vs 80%).** Los errores típicos de ambos son los mismos: confundir cancelar, modificar y reservar, que comparten casi todas las palabras. Por ejemplo, el LLM lee "al final vamos a ser 6 y no 4 en la reserva…" como una reserva nueva.
+2. **Los embeddings generalizan mejor que contar palabras** con tan pocos datos (CV 0.70 vs 0.60). Capturan que "apartar" ≈ "reservar" aunque nunca se vieran juntas (Clase 08: palabras similares quedan cerca en el espacio).
+3. **Lo léxico y lo denso fallan en casos distintos**, como dice la Clase 12 sobre búsqueda híbrida. Concatenar TF-IDF y embeddings da el mejor modelo (CV 0.70) y es el que más se mantiene en el holdout (92%). La validación cruzada eligió el mismo modelo que habría elegido el holdout: la selección fue honesta.
+4. **La lematización no ayudó** (0.60, por debajo del stemming con 0.65). El lematizador de spaCy falla justo con los verbos más típicos de un cliente, los que llevan pronombre pegado (enclíticos): "resérvame" → *reservamir*, y "agéndame" y "cancélala" quedan sin lematizar. El stemming, que solo corta sufijos, los deja mejor ("reserv", "cancel").
+5. **LSA no aporta con 179 frases.** La SVD necesita un corpus grande para encontrar temas latentes (en la Clase 06 el ejemplo funciona porque los temas están perfectamente separados).
+6. **El clasificador clásico supera al LLM en la prueba (96% vs 92%) y le gana con frases nuevas (92% vs 80%).** Los errores típicos de ambos son los mismos: confundir cancelar, modificar y reservar, que comparten casi todas las palabras. Por ejemplo, el LLM lee "al final vamos a ser 6 y no 4 en la reserva…" como una reserva nueva.
 
 ### 3.3 Extracción de datos — Clases 04, 05 y 06
 
@@ -175,7 +177,7 @@ La anotación completa está en `datos/anotacion_alucinaciones_v1.json`. La revi
 | holdout | NER spaCy | 0.97 | 1.00 | 1.00 | **0.86** | 1.00 | 1.00 | 0 |
 
 - Es la regla práctica de la Clase 04: **"si el patrón es simple y fijo, usa RE"**. Horas, números y sucursales tienen patrones fijos, y las regex le ganan al LLM. El LLM pierde horas aproximadas ("en la noche" → `null`) y fechas (#17, #20).
-- **El NER estadístico es peor que la regla** para nombres. Confunde saludos con personas y se pierde nombres en frases cortas ("Soy Joaquín"). Sirve como respaldo, no como reemplazo.
+- **El NER estadístico es peor que la regla** para nombres. Confunde saludos con personas y se pierde nombres en frases cortas ("Soy Joaquín"). Sirve como respaldo, no como reemplazo. Probando la interfaz de chat apareció otro caso: en un PC con otra versión de spaCy, el NER tomó "14:00 horrrrass" (un "horas" mal escrito) como nombre de cliente. Desde entonces el NER solo puede proponer nombres que empiecen con mayúscula; las métricas no cambian.
 
 **Desambiguación léxica, WSD (Clase 06).** El dominio tiene dos homónimos: **"mañana"** (el día siguiente, o la franja en "en la mañana") y **"once"** (el número, o la comida en "tomar once"). Se resuelven con **features colocacionales** (Clase 06: la palabra inmediatamente anterior) o con la **categoría gramatical** (Clase 03: spaCy etiqueta "la mañana" como NOUN y "mañana voy" como ADV). Se probó con 12 casos (`datos/casos_wsd.json`):
 
@@ -214,10 +216,17 @@ La tabla `TRANSICIONES` de `dialogo.py` es la función de transición δ(estado,
 | "a la misma hora" | después de un rechazo por lunes | El valor sigue en el estado |
 | Varios actos en un turno | "Hola, quiero reservar" (expresivo + directivo) | Se segmenta por puntuación; un acto directivo prevalece sobre el saludo |
 | Saludo + pregunta | "Hola, ¿tienen delivery?" o "Hola tienen delivery?" | El saludo inicial se separa aunque no haya coma. Si el mensaje parte con saludo o trae una pregunta, gana el segmento que no es social. Antes la V2 solo saludaba y dejaba la pregunta sin responder |
+| Pregunta en medio de una reserva | "¿Tienen opciones veganas?" mientras faltan datos de la reserva | Una pregunta (lleva "?") que el clasificador ve como consulta se responde, y la reserva queda en pausa en `RECOLECTANDO`. Antes, si la pregunta mencionaba un dato (una restricción, un día), se tomaba como dato de la reserva y no se respondía. Se encontró probando la interfaz de chat; las métricas no cambian |
+| Reparación (corregir un dato) | "Provi" → "no, providencia" · "no, a nombre de Camila" · "NOOOO" | Un "no" al inicio con un dato nuevo es una corrección: el dato se reemplaza y la tarea sigue (antes el "no" empujaba al clasificador hacia *cancelar*). En "no, mejor quiero reservar" se clasifica solo lo que viene después del "no". Un "no" solo se responde pidiendo el dato correcto. Además se aceptan abreviaturas de sucursal ("Provi") y el NER ya no toma como nombres "Nono", "Provi" ni muletillas como "Oka" u "Okey" (de "Dale Pedro" queda "Pedro"; "Vale" se mantiene porque es un nombre real). Esas muletillas y los verbos de pedido ("dame") tampoco cuentan como términos consultados, así que "Okey, dame la carta" ya no responde "no tengo información sobre okey ni dame". Se encontró probando la interfaz; las métricas no cambian |
+| Cierre de la conversación | Bot: "¿Necesitas algo más?" → "No, gracias" | Par pregunta–respuesta: fuera de una reserva en curso, un "no", "nada más" o "eso es todo" (con o sin "gracias") es una despedida. Antes el "no" llevaba al clasificador a *cancelar* |
+| Negación de la tarea | "No quiero cancelar" · "no quiero cancelar, quiero reservar" | Una cláusula negada no es el acto de habla: se quita antes de clasificar y se clasifica el resto. Si solo hay negación, la tarea negada se abandona sin registrar nada (si era la tarea en curso) o se aclara que no se hará. Antes el clasificador veía "cancelar" y entraba a la cancelación |
+| Cambio de tarea sin datos | "reserva" (mal clasificado como cancelar) y luego "quiero reservar" | Si la tarea en curso todavía no tiene ningún dato, no hay nada que perder: un pedido explícito de otra transacción cambia de tarea aunque la confianza no llegue a `UMBRAL_CAMBIO`. Antes el bot quedaba atrapado pidiendo los datos de la cancelación. Se encontró probando la interfaz de chat |
+| Respuesta a lo que el bot preguntó | El bot pide "cuántas personas son" y el cliente responde solo "7" | Par pregunta–respuesta: un número suelto, mientras falta la cantidad de personas, se toma como esa cantidad. Antes no se reconocía, el clasificador lo leía como saludo y el bot respondía la bienvenida, como si la conversación se hubiera reiniciado. Igual con el nombre: si es lo único que falta, una respuesta como "Pedro" se toma como el nombre. Y después de un disparador fuerte ("a nombre de", "me llamo") se acepta el nombre aunque venga en minúscula ("a nombre de marty"), porque el contexto ya indica que es un nombre; con "soy" se sigue exigiendo mayúscula ("soy vegano") |
+| No perder el hilo | "jaja ok" o "gracias" con una reserva a medio llenar | En vez de saludar de nuevo, el bot recuerda qué falta ("Seguimos con tu solicitud: para completar la reserva me falta la fecha"). Ambas reglas se encontraron probando la interfaz; las métricas del sistema no cambian. En la ablación "solo NER" el F1 multiturno sube de 0.81 a 0.95, porque un turno sin datos ya no hace perder los datos acumulados |
 
 | Conjunto | Sistema | Intención final | F1 datos | Conversaciones completas |
 |---|---|---|---|---|
-| multiturno (desarrollo, 12) | sin estado | 17% | 0.45 | 2/12 |
+| multiturno (desarrollo, 12) | sin estado | 25% | 0.52 | 3/12 |
 | multiturno (desarrollo, 12) | autómata + discurso | **92%** | **1.00** | **11/12** |
 | multiturno (desarrollo, 12) | LLM V1 (historial completo) | 92% | 0.76 | 7/12 |
 | multiturno (desarrollo, 12) | LLM V1b (historial completo) | 75% | 0.91 | 8/12 |
@@ -298,7 +307,7 @@ El éxito de la V2 no es mérito de un filtro: no tiene a quién "convencer", po
 
 | | V1 (prompt original) | V1b (prompt mejorado) | V2 |
 |---|---|---|---|
-| Intención | 92% | 92% | 92% |
+| Intención | 92% | 92% | 94% |
 | F1 datos | 0.95 | 0.97 | 0.99 |
 | Claves inventadas | 7 | **0** | 0 |
 | Datos inventados o políticas violadas (graves) | 7 | 4 | 0 |
@@ -318,7 +327,7 @@ Es lo que explica la Clase 10: el LLM no "obedece reglas", **continúa el texto 
 
 ### 3.8 ¿Por qué no fine-tuning ni PEFT? — Clase 11
 
-La Clase 10 cierra con la regla práctica: *"primero prompting, luego RAG si falta conocimiento, luego fine-tuning si falta comportamiento"*. Nuestro problema principal es de **conocimiento** (no inventar datos del local), y la Clase 11 lo confirma: el fine-tuning "es bueno para comportamiento/estilo; para hechos que cambian, RAG". Además, tenemos 150 frases de entrenamiento; con "pocos datos, muchas épocas" el riesgo es el sobreajuste. Una extensión razonable con más datos sería **LoRA sobre BETO** (`task_type="SEQ_CLS"`) para la intención, como la actividad C de la Clase 11 (clasificar tickets con un modelo barato).
+La Clase 10 cierra con la regla práctica: *"primero prompting, luego RAG si falta conocimiento, luego fine-tuning si falta comportamiento"*. Nuestro problema principal es de **conocimiento** (no inventar datos del local), y la Clase 11 lo confirma: el fine-tuning "es bueno para comportamiento/estilo; para hechos que cambian, RAG". Además, tenemos 179 frases de entrenamiento; con "pocos datos, muchas épocas" el riesgo es el sobreajuste. Una extensión razonable con más datos sería **LoRA sobre BETO** (`task_type="SEQ_CLS"`) para la intención, como la actividad C de la Clase 11 (clasificar tickets con un modelo barato).
 
 ### 3.9 Eficiencia — Clase 12
 
@@ -340,7 +349,7 @@ La V2 es **unas 100 veces más rápida** que el LLM. La V1b es más rápida que 
 |---|---|---|---|---|---|---|---|---|
 | prueba (50) | LLM V1 | 92% | 0.90 | 0.95 | 7 | **7** | **5** | **6** |
 | prueba (50) | LLM V1b | 92% | 0.91 | 0.97 | 0 | **4** | **1** | **20** |
-| prueba (50) | V2 | 92% | 0.90 | 0.99 | 0 | **0** | **1** | **0** |
+| prueba (50) | V2 | 94% | 0.93 | 0.99 | 0 | **0** | **1** | **0** |
 | holdout (25) | LLM V1 | 80% | 0.73 | 0.97 | 4 | 4 | 2 | 5 |
 | holdout (25) | LLM V1b | 92% | 0.91 | 1.00 | 0 | 2 | 0 | 8 |
 | holdout (25) | V2 | 92% | 0.92 | 1.00 | 0 | 0 | 0 | 0 |
@@ -355,13 +364,13 @@ La única "leve" de la V2 (#50) es honesta de reportar: dice "no tenemos sillas 
 |---|---|---|---|---|---|
 | **V2 completa** | **92%** | **1.00** | 92% | **1.00** | **87%** |
 | clasificador → reglas | 48% | 0.95 | 100% | 1.00 | 47% |
-| clasificador → TF-IDF de caracteres | 88% | 1.00 | 100% | 1.00 | 80% |
-| clasificador → solo embeddings | 76% | 1.00 | 67% | 0.94 | 73% |
+| clasificador → TF-IDF de caracteres | 76% | 1.00 | 100% | 1.00 | 73% |
+| clasificador → solo embeddings | 72% | 1.00 | 75% | 1.00 | 80% |
 | extractor → solo regex | 92% | 1.00 | 92% | 1.00 | 87% |
-| extractor → solo NER spaCy | 92% | 0.97 | 67% | 0.81 | 87% |
-| sin seguimiento de diálogo | 84% | 0.95 | **17%** | **0.45** | 87% |
+| extractor → solo NER spaCy | 92% | 0.97 | 67% | 0.95 | 87% |
+| sin seguimiento de diálogo | 84% | 0.95 | **25%** | **0.52** | 87% |
 
-- **El seguimiento de diálogo es la pieza más importante en conversaciones de varios turnos** (17% → 92%).
+- **El seguimiento de diálogo es la pieza más importante en conversaciones de varios turnos** (25% → 92%).
 - **El clasificador decide la calidad de todo lo demás:** con reglas, hasta las respuestas a consultas caen (47%), porque se responde a la intención equivocada.
 - **El NER de spaCy no mejora a las regex** en este dominio; con frases cortas ("Soy Joaquín") empeora.
 - El TF-IDF de caracteres resuelve mejor el multiturno (100%) pero peor el holdout. Ningún clasificador gana en todo.
@@ -370,7 +379,7 @@ La única "leve" de la V2 (#50) es honesta de reportar: dice "no tenemos sillas 
 
 ## 5. Conclusiones para la presentación
 
-1. **Para este problema, las técnicas clásicas del curso igualan al LLM en entender y le ganan en ser confiables.** En la prueba la intención queda igual (92%); con frases nuevas, la V2 se mantiene (92%) y el LLM cae (80%). Los datos mejoran (0.99 vs 0.95) y los problemas (graves + leves + acciones falsas) bajan de 18 a 1.
+1. **Para este problema, las técnicas clásicas del curso igualan al LLM en entender y le ganan en ser confiables.** En la prueba la intención sube levemente (92% → 94%); con frases nuevas, la V2 se mantiene (92%) y el LLM cae (80%). Los datos mejoran (0.99 vs 0.95) y los problemas (graves + leves + acciones falsas) bajan de 18 a 1.
 2. **El LLM no falla en "entender"; falla en lo que la Clase 10 llama alucinación y en no saber decir "no sé".** Encuentra la información correcta casi siempre, pero en las consultas ciegas responde bien solo el 40%.
 3. **Mejorar el prompt ayuda, pero no basta.** La V1b (todas las técnicas de la Clase 10) sube de 40% a 73% en consultas ciegas, elimina las claves inventadas y mejora la intención con frases nuevas. Pero sigue inventando detalles, resiste solo 3 de 5 injections y convierte "registré tu solicitud" en una frase automática que se dice incluso al violar las políticas. **Las reglas de negocio y las acciones deben vivir en código; el prompt solo puede pedirlas.**
 4. **Hacer explícito lo implícito** es el hilo de todas las clases: el estado del diálogo (C02/C07), las reglas del local (C10), el esquema de salida (C04) y la base de conocimiento (C12). Lo explícito se puede probar, versionar y corregir.
@@ -405,6 +414,7 @@ python -m spacy download es_core_news_md
 
 cd fase2
 python Version2.py --debug        # chat V2 mostrando intención, estado del autómata y hechos citados
+python interfaz_chat.py           # el mismo chat en el navegador, con un panel de lo que entendió el bot
 python experimentos.py            # los 6 experimentos -> resultados/RESULTADOS.md
 python sondeo_embeddings.py       # experimento negativo de la sección 3.5
 

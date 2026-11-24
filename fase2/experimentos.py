@@ -181,7 +181,7 @@ def e1_intencion():
                   pct(v1h["acc"]) if v1h else "—", dec(v1h["f1_int"]) if v1h else "—"])
     md = ["## E1 · Intención (Clases 02, 06, 08)", "",
           "Cada modelo clasifica el primer mensaje de cada conversación. `CV` = F1-macro con validación cruzada "
-          "de 5 particiones sobre el corpus de entrenamiento (150 frases): **es el criterio para elegir el modelo**, "
+          "de 5 particiones sobre el corpus de entrenamiento (179 frases): **es el criterio para elegir el modelo**, "
           "porque no mira los datos de prueba. Las reglas no se entrenan: su CV es su desempeño directo sobre el corpus.", "",
           tabla(["Modelo", "CV F1", "Prueba acc", "Prueba F1", "Holdout acc", "Holdout F1"], filas), "",
           f"Errores del modelo elegido (`{config.CLASIFICADOR}`): " + "; ".join(

@@ -1,5 +1,5 @@
 {
-  "_nota": "Corpus de ENTRENAMIENTO para los clasificadores de intención. Escrito aparte de conversaciones_prueba.json y conversaciones_holdout.json, que solo se usan para evaluar (Clase 11: separar entrenamiento, validación y prueba; evitar data leakage). La selección de modelo se hace con validación cruzada sobre este archivo.",
+  "_nota": "Corpus de ENTRENAMIENTO para los clasificadores de intención. Escrito aparte de conversaciones_prueba.json y conversaciones_holdout.json, que solo se usan para evaluar (Clase 11: separar entrenamiento, validación y prueba; evitar data leakage). La selección de modelo se hace con validación cruzada sobre este archivo. Se agregaron frases imperativas ('dame...', 'pásame...') al probar la interfaz: 'dame' solo aparecía en un ejemplo fuera de dominio ('dame la receta...') y el clasificador aprendió que 'dame' = fuera de dominio. También se agregaron mensajes de una o dos palabras ('reservar', 'carta', 'horario'...): 'reserva' sola se clasificaba como cancelar. Y comentarios sociales ('qué rico', 'qué bueno') y la primera persona plural ('reservemos'), encontrados probando la interfaz.",
   "hacer_reserva": [
     "quiero hacer una reserva",
     "me gustaria reservar una mesa",
@@ -25,7 +25,16 @@
     "pueden apartarme una mesa en nunoa",
     "nos podrian tener una mesa lista para las 14:00",
     "una mesa para uno por favor",
-    "quisiera hacer una reservacion"
+    "quisiera hacer una reservacion",
+    "dame una mesa para el jueves",
+    "anotame una reserva porfa",
+    "reservar",
+    "reserva",
+    "quiero reservar",
+    "reservar mesa",
+    "okey, reservemos",
+    "ya, reservemos",
+    "dale, hagamos la reserva"
   ],
   "modificar_reserva": [
     "quiero cambiar la hora de mi reserva",
@@ -47,7 +56,9 @@
     "al final somos menos, cambien la reserva a 3",
     "quiero pasar mi reserva a la otra sucursal",
     "podemos cambiar la mesa que tenia para manana",
-    "necesito corregir los datos de mi reserva"
+    "necesito corregir los datos de mi reserva",
+    "modificar",
+    "cambiar reserva"
   ],
   "cancelar_reserva": [
     "quiero cancelar mi reserva",
@@ -67,7 +78,9 @@
     "cancelacion de reserva por favor",
     "se nos complico, no iremos el viernes",
     "quiero anular la reservacion del jueves",
-    "borra mi mesa del martes"
+    "borra mi mesa del martes",
+    "anular",
+    "cancelar reserva"
   ],
   "consultar_menu": [
     "que tienen para comer",
@@ -94,7 +107,14 @@
     "precio del mote con huesillo",
     "tienen papas fritas",
     "la cazuela trae papa",
-    "que hay de comer para un celiaco"
+    "que hay de comer para un celiaco",
+    "dame la carta",
+    "dame el menu por favor",
+    "la carta porfa",
+    "muestrame los platos que tienen",
+    "pasame la lista de precios",
+    "carta",
+    "menu"
   ],
   "consultar_info_local": [
     "donde queda el restaurante",
@@ -120,7 +140,12 @@
     "estan abiertos hoy",
     "cual es el horario de atencion",
     "tienen sala para eventos",
-    "hay juegos para ninos"
+    "hay juegos para ninos",
+    "dame la direccion del local",
+    "dime el horario de atencion",
+    "pasame el horario",
+    "horario",
+    "direccion"
   ],
   "saludo_despedida": [
     "hola",
@@ -140,7 +165,11 @@
     "saludos",
     "mil gracias, muy amable",
     "listo, chao",
-    "buenas tardes"
+    "buenas tardes",
+    "que rico",
+    "se ve rico",
+    "que bueno",
+    "buenisimo, gracias"
   ],
   "fuera_de_dominio": [
     "cuanto esta el dolar hoy",

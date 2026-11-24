@@ -33,7 +33,10 @@ GENERICAS = {"opcion", "opciones", "algo", "cosa", "cosas", "tipo", "favor", "di
              "gente", "vez", "alguna", "algun", "alguno", "mesa", "reserva", "nombre", "tal", "lugar",
              "precio", "precios", "local", "locales", "restaurante", "senor", "senora", "hola", "chile",
              "santiago", "picada", "lang", "chi", "info", "informacion", "consulta", "pregunta", "ayuda",
-             "bueno", "buena", "buenas", "favor", "rico", "rica", "mejor", "cuanto", "exacta", "exacto"}
+             "bueno", "buena", "buenas", "favor", "rico", "rica", "mejor", "cuanto", "exacta", "exacto",
+             # muletillas y verbos de pedido: no son lo que se consulta ("okey, dame la carta")
+             "ok", "oka", "okey", "okay", "dale", "listo", "vale", "perfecto", "dame", "pasame", "muestrame",
+             "dime", "porfa", "porfavor", "gracias"}
 POS_CONTENIDO = {"NOUN", "PROPN", "ADJ"}
 
 

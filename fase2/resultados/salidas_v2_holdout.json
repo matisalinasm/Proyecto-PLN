@@ -13,7 +13,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.31
+  "confianza": 0.37
  },
  "102": {
   "intencion": "hacer_reserva",
@@ -29,7 +29,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.55
+  "confianza": 0.53
  },
  "103": {
   "intencion": "hacer_reserva",
@@ -45,7 +45,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.57
+  "confianza": 0.42
  },
  "104": {
   "intencion": "hacer_reserva",
@@ -77,7 +77,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.89
+  "confianza": 0.88
  },
  "106": {
   "intencion": "hacer_reserva",
@@ -93,7 +93,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.91
+  "confianza": 0.85
  },
  "107": {
   "intencion": "modificar_reserva",
@@ -109,7 +109,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.47
+  "confianza": 0.4
  },
  "108": {
   "intencion": "modificar_reserva",
@@ -141,7 +141,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "cancelar_reserva",
-  "confianza": 0.86
+  "confianza": 0.62
  },
  "110": {
   "intencion": "cancelar_reserva",
@@ -157,7 +157,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.37
+  "confianza": 0.3
  },
  "111": {
   "intencion": "consultar_menu",
@@ -168,7 +168,7 @@
    "carta"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.7
+  "confianza": 0.6
  },
  "112": {
   "intencion": "consultar_menu",
@@ -179,7 +179,7 @@
    "plato_churrasco"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.46
+  "confianza": 0.47
  },
  "113": {
   "intencion": "consultar_menu",
@@ -192,7 +192,7 @@
    "plato_ensalada"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.8
+  "confianza": 0.64
  },
  "114": {
   "intencion": "consultar_menu",
@@ -214,7 +214,7 @@
    "plato_empanada"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.73
+  "confianza": 0.72
  },
  "116": {
   "intencion": "consultar_info_local",
@@ -227,7 +227,7 @@
    "horario"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.76
+  "confianza": 0.78
  },
  "117": {
   "intencion": "consultar_info_local",
@@ -240,7 +240,7 @@
    "sucursal_nunoa"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.34
+  "confianza": 0.36
  },
  "118": {
   "intencion": "fuera_de_dominio",
@@ -249,7 +249,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.38
+  "confianza": 0.35
  },
  "119": {
   "intencion": "consultar_info_local",
@@ -261,7 +261,7 @@
    "sucursal_nunoa"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.58
+  "confianza": 0.77
  },
  "120": {
   "intencion": "consultar_info_local",
@@ -270,7 +270,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.57
+  "confianza": 0.59
  },
  "121": {
   "intencion": "saludo_despedida",
@@ -279,7 +279,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "saludo_despedida",
-  "confianza": 0.84
+  "confianza": 0.87
  },
  "122": {
   "intencion": "saludo_despedida",
@@ -288,7 +288,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "saludo_despedida",
-  "confianza": 0.76
+  "confianza": 0.84
  },
  "123": {
   "intencion": "fuera_de_dominio",
@@ -297,7 +297,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.37
+  "confianza": 0.43
  },
  "124": {
   "intencion": "fuera_de_dominio",
@@ -306,7 +306,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.37
+  "confianza": 0.41
  },
  "125": {
   "intencion": "consultar_info_local",
@@ -315,6 +315,6 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.57
+  "confianza": 0.54
  }
 }

@@ -79,7 +79,7 @@ return make_pipeline(FeatureUnion([("lexica", lexica), ("densa", densa)]), lr())
 - **Parte densa (promedio de embeddings de spaCy):** cada palabra es un vector de 300 números; palabras parecidas tienen vectores cercanos. Sabe que "apartar" ≈ "reservar", pero mezcla todo en un promedio.
 - **Juntas** cubren los puntos débiles de cada una (la "búsqueda híbrida" de la Clase 12).
 
-**Qué revisar:** el corpus de entrenamiento `datos/entrenamiento_intenciones.json` (150 frases). Es la pieza que más mejora el clasificador. Agregar frases (sin copiarlas del set de prueba) es más efectivo que ajustar parámetros.
+**Qué revisar:** el corpus de entrenamiento `datos/entrenamiento_intenciones.json` (179 frases). Es la pieza que más mejora el clasificador. Agregar frases (sin copiarlas del set de prueba) es más efectivo que ajustar parámetros.
 
 ### `extraccion.py` — Clases 04, 05 y 06
 
@@ -137,17 +137,17 @@ Los efectos medidos vienen de `barrido.py`. **La única columna válida para ele
 
 | Parámetro | Valor | Qué controla | Efecto medido |
 |---|---|---|---|
-| `CLASIFICADOR` | `hibrido_lr` | qué modelo usa el chatbot | Ver E1 en `RESULTADOS.md`. Es el mejor por CV (0.72) |
-| `LR_C` | 10 | regularización de la regresión logística (C = 1/λ) | C=0.1 → CV 0.44 · C=1 → 0.67 · **C=10 → 0.72** · C=100 → **0.75** |
+| `CLASIFICADOR` | `hibrido_lr` | qué modelo usa el chatbot | Ver E1 en `RESULTADOS.md`. Es el mejor por CV (0.70) |
+| `LR_C` | 10 | regularización de la regresión logística (C = 1/λ) | C=0.1 → CV 0.34 · C=1 → 0.70 · **C=10 → 0.70 (holdout 92%)** · C=100 → 0.71 (holdout 88%) |
 | `LR_MAX_ITER` | 3000 | iteraciones del optimizador | solo importa si aparece una advertencia de "no convergió" |
 | `NB_ALPHA` | 0.5 | suavizado de Naive Bayes | solo afecta a `bow_nb` |
 | `CHAR_NGRAMAS` | (2, 5) | tamaño de los trozos de letras | solo afecta a `tfidf_char_lr` |
 | `KNN_VECINOS` | 3 | k en vecino más cercano | solo afecta a `tfidf_knn` y `emb_knn` |
 | `LSA_DIMENSIONES` | 60 | dimensiones de la SVD | solo afecta a `lsa_lr` |
 
-**Decisión pendiente para el equipo — `LR_C`.** El barrido muestra que **C = 100 mejora la validación cruzada (0.72 → 0.75)**, y con nuestro propio criterio de selección habría que preferirlo. No lo cambié para no mover los resultados ya reportados. Si deciden cambiarlo: editen `config.py`, corran `python experimentos.py` y actualicen las tablas de `EXPLICACION_FASE2.md`. En el holdout no cambia (92%), así que es una mejora pequeña.
+**`LR_C` — decisión resuelta.** Con el corpus original de 150 frases, C = 100 ganaba la validación cruzada (0.75 contra 0.72). Con el corpus final de 179 frases (se agregaron frases con "dame…" y mensajes cortos como "reserva", ver la sección 3.2 de `EXPLICACION_FASE2.md`), C = 100 vuelve a ganar la CV por poco (0.71 contra 0.70), pero C = 10 es mejor en el sistema completo sobre el holdout (92% contra 88%) y empata en lo demás. Se mantiene C = 10: la diferencia en CV es menor que la variación que produce agregar unas pocas frases. Que la "mejor" C cambie con cada ajuste del corpus muestra lo sensibles que son estas decisiones con pocos datos.
 
-Intuición de C: con C alto, el modelo casi no se penaliza por tener pesos grandes y se ajusta mucho a las 150 frases. Con C bajo, lo obligamos a ser "modesto". Con C = 0.1 queda tan restringido que no aprende (CV 0.44).
+Intuición de C: con C alto, el modelo casi no se penaliza por tener pesos grandes y se ajusta mucho a las 179 frases. Con C bajo, lo obligamos a ser "modesto". Con C = 0.1 queda tan restringido que no aprende (CV 0.34).
 
 ### 3.2 Extracción
 
@@ -196,7 +196,7 @@ Estas listas influyen más que los números de `config.py`:
 
 | Dónde | Qué es | Cuándo editarla |
 |---|---|---|
-| `datos/entrenamiento_intenciones.json` | 150 frases de entrenamiento | el clasificador confunde intenciones (hoy: cancelar ↔ modificar) |
+| `datos/entrenamiento_intenciones.json` | 179 frases de entrenamiento | el clasificador confunde intenciones (hoy: cancelar ↔ modificar) |
 | `conocimiento.py` → `indexar` | sinónimos de cada hecho | el bot dice "no tengo información" de algo que sí está |
 | `extraccion.py` → patrones | cómo se reconoce cada dato | no capta una forma de escribir ("vamos 6") |
 | `extraccion.py` → `OTRAS_COMUNAS` | comunas donde no hay local | preguntan por una comuna que no está en la lista |
