@@ -64,6 +64,7 @@ pip install -r requirements.txt
 python -m spacy download es_core_news_md
 cd fase2
 python Version2.py --debug       # chat de la V2 (sin LLM)
+python interfaz_chat.py          # el mismo chat, en el navegador (http://127.0.0.1:7860)
 python experimentos.py           # regenera todas las tablas
 python correr_llm.py v1b todos   # V1 con prompt mejorado (requiere Ollama)
 ```

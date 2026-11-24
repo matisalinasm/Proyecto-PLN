@@ -94,8 +94,8 @@
   {
    "id": 16,
    "categoria": "ninguna",
-   "motivo": "Intención errada (cancelar → modificar): registra una solicitud equivocada, pero no inventa datos",
-   "respuesta": "Registré tu solicitud de modificación: mañana, sucursal Ñuñoa, a nombre de Camila."
+   "motivo": "Revisado de nuevo tras ampliar el corpus: ahora la intención es correcta (cancelación) y los datos son los del mensaje",
+   "respuesta": "Registré tu solicitud de cancelación: mañana, sucursal Ñuñoa, a nombre de Camila."
   },
   {
    "id": 17,

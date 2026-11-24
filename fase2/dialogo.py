@@ -33,7 +33,7 @@ import re
 
 import conocimiento as kb
 import config
-from extraccion import CAMPOS, EXTRACTORES
+from extraccion import CAMPOS, EXTRACTORES, NUMEROS, _SALUDOS
 from guardrails import enmascarar_sensibles
 from intencion import CONSULTAS, TRANSACCIONALES, Clasificador
 from preprocesamiento import normalizar
@@ -124,6 +124,22 @@ class Asistente:
             return pred
         t = normalizar(texto)
         n_datos = sum(v is not None for v in datos.values())
+        # Una PREGUNTA sobre la carta o el local en medio de una reserva ("¿Tienen opciones veganas?")
+        # se responde como consulta, aunque mencione un dato; la reserva queda en pausa (el estado
+        # RECOLECTANDO no cambia) y sigue con el próximo dato.
+        # Corrección (Clase 07, reparación): "no, a nombre de Camila" corrige un dato; el "no" no es cancelar.
+        if self.estado == RECOLECTANDO and n_datos and re.match(r"\W*(n+o+)+\b", normalizar(texto)):
+            return self.intencion_activa
+        es_pregunta = "?" in texto or "¿" in texto
+        if self.estado == RECOLECTANDO and pred in CONSULTAS and es_pregunta:
+            return pred
+        # Si la transacción en curso todavía no tiene ningún dato, no hay nada que proteger: un pedido
+        # explícito de otra transacción ("quiero reservar" después de un "reserva" mal clasificado como
+        # cancelar) cambia de tarea sin exigir UMBRAL_CAMBIO.
+        sin_datos_aun = not any(self.slots.values())
+        if (self.estado == RECOLECTANDO and sin_datos_aun and pred in TRANSACCIONALES
+                and pred != self.intencion_activa and conf >= config.UMBRAL_SEGMENTO):
+            return pred
         if self.estado == RECOLECTANDO and (n_datos or pred in TRANSACCIONALES) and (
                 pred not in TRANSACCIONALES or pred == self.intencion_activa or conf < config.UMBRAL_CAMBIO):
             return self.intencion_activa                                   # slot filling
@@ -169,7 +185,46 @@ class Asistente:
     def procesar(self, mensaje: str) -> dict:
         mensaje = enmascarar_sensibles(mensaje)                            # guardrail (Clase 04)
         datos = self.extraer(mensaje)
-        pred, conf = self._clasificar(mensaje)
+        # Par pregunta-respuesta (Clase 07): si el bot está pidiendo la cantidad de personas y el
+        # cliente responde solo un número ("7", "siete"), ese número es la respuesta a lo que se preguntó.
+        suelto = re.fullmatch(r"\W*(\d{1,3}|" + "|".join(NUMEROS) + r")\W*", normalizar(mensaje))
+        if (suelto and self.seguimiento and self.estado == RECOLECTANDO and self.intencion_activa == "hacer_reserva"
+                and not self.slots.get("cantidad_personas") and datos.get("cantidad_personas") is None):
+            g = suelto.group(1)
+            datos["cantidad_personas"] = int(g) if g.isdigit() else NUMEROS[g]
+        # Lo mismo con el nombre: si es lo único que falta (el bot acaba de pedirlo) y el cliente
+        # responde solo "Pedro" o "Ana María", eso es el nombre. Se excluyen saludos ("hola", "gracias").
+        requeridos = {"hacer_reserva": config.CAMPOS_RESERVA,
+                      "cancelar_reserva": config.CAMPOS_CANCELACION}.get(self.intencion_activa, [])
+        solo = re.fullmatch(r"\W*([A-Za-zÁÉÍÓÚÑáéíóúñü]{2,}(?:\s+[A-Za-zÁÉÍÓÚÑáéíóúñü]{2,}){0,2})\W*", mensaje)
+        if (solo and self.seguimiento and self.estado == RECOLECTANDO and not any(datos.values())
+                and [c for c in requeridos if not self.slots.get(c)] == ["nombre_cliente"]
+                and normalizar(solo.group(1).split()[0]) not in _SALUDOS | {"si", "no", "chao", "adios"}):
+            datos["nombre_cliente"] = solo.group(1).title()
+        # Reparación: en "no, mejor quiero reservar" el "no" rechaza lo anterior; lo que importa es lo que
+        # viene después. Se clasifica solo esa parte (si no, el "no" empuja hacia "cancelar").
+        # Par pregunta-respuesta (Clase 07): tras "¿Necesitas algo más?", un "no, gracias" cierra la
+        # conversación. No es un rechazo de la reserva ni una cancelación (el "no" engañaba al clasificador).
+        cierre = r"(n+o+|nop|nada|nada mas|eso es todo|eso seria todo|asi esta bien|estoy bien|todo bien|por ahora no)"
+        if (self.seguimiento and self.estado != RECOLECTANDO and re.fullmatch(
+                r"\W*" + cierre + r"(?:\W+(?:" + cierre[1:-1] + r"|gracias|muchas gracias|por ahora))*\W*",
+                normalizar(mensaje))):
+            return {"intencion": "saludo_despedida", "datos_extraidos": {},
+                    "respuesta": f"¡Perfecto! Gracias por preferir {kb.NOMBRE_LOCAL}. ¡Te esperamos!",
+                    "estado": self.estado, "hechos": [], "intencion_clasificador": "cierre", "confianza": 1.0}
+        # Negación del acto de habla (Clase 07): "no quiero cancelar" NO es una cancelación. La cláusula
+        # negada se quita antes de clasificar ("no quiero cancelar, quiero reservar" -> "quiero reservar").
+        texto_clf = mensaje
+        niega = re.search(r"\bno (?:quiero|voy a|necesito|deseo|era) (?:\w+ )?(cancel|anul|modific|cambi|reserv)\w*"
+                          r"(?: (?:la|mi|una|de) reserva)?", normalizar(mensaje))
+        if niega and self.seguimiento:
+            resto = re.sub(r"^\W*(y|sino|mejor|pero)?\W*", "", normalizar(mensaje).replace(niega.group(0), " ").strip())
+            if len(re.sub(r"\W", "", resto)) >= 3:
+                texto_clf = resto
+            else:
+                return self._negacion(niega.group(1))
+        reparo = re.match(r"\W*(?:n+o+)+\W+(?:mejor\s+|en realidad\s+)?(.{3,})", texto_clf, re.I)
+        pred, conf = self._clasificar(reparo.group(1) if reparo and self.estado == RECOLECTANDO else texto_clf)
         intencion = self._resolver_intencion(mensaje, pred, conf, datos)
         hechos = []
         if intencion in TRANSACCIONALES:
@@ -184,6 +239,11 @@ class Asistente:
                                                    mundo_cerrado_por_intencion=self.mundo_cerrado)
             self.ultimos_hechos = hechos or self.ultimos_hechos
             evento, salida_datos = "consulta", {k: v for k, v in datos.items() if v is not None}
+        elif self.seguimiento and self.estado == RECOLECTANDO and self.intencion_activa:
+            # Algo sin datos en medio de una reserva ("ok", "jaja"): no se saluda de nuevo como si la
+            # conversación partiera de cero; se recuerda qué falta para completarla.
+            respuesta = self._recordatorio(intencion, normalizar(mensaje))
+            evento, salida_datos = "social", dict(self.slots)
         else:
             respuesta = self._social(intencion, normalizar(mensaje))
             evento, salida_datos = "social", {k: v for k, v in datos.items() if v is not None}
@@ -227,6 +287,43 @@ class Asistente:
             return "Para cancelar la reserva necesito " + enumerar(faltan) + ".", "incompleta"
         return self._registrar("cancelacion", f"Registré tu solicitud de cancelación: {resumen(d)}.")
 
+    def _negacion(self, raiz):
+        """El cliente niega una tarea ("no quiero cancelar"). Si es la tarea en curso, se abandona sin
+        registrar nada; si no, se aclara que no se hará y se sigue con lo que había."""
+        negada = {"cancel": "cancelar_reserva", "anul": "cancelar_reserva", "modific": "modificar_reserva",
+                  "cambi": "modificar_reserva", "reserv": "hacer_reserva"}[raiz]
+        nombre = {"cancelar_reserva": "cancelación", "modificar_reserva": "modificación",
+                  "hacer_reserva": "reserva"}[negada]
+        if self.estado == RECOLECTANDO and self.intencion_activa == negada:
+            self.estado, self.intencion_activa = INICIO, None
+            self.slots = {c: None for c in CAMPOS}
+            respuesta = (f"Entendido, dejo la {nombre} sin efecto; no registré nada. "
+                         "¿Quieres hacer una reserva, ver la carta o saber de horarios y sucursales?")
+        elif self.estado == RECOLECTANDO and self.intencion_activa:
+            cuerpo = self._recordatorio("", "")[len("Seguimos con tu solicitud: "):]
+            respuesta = f"Entendido, no haré ninguna {nombre}. " + cuerpo[0].upper() + cuerpo[1:]
+        else:
+            respuesta = (f"Entendido, no haré ninguna {nombre}. "
+                         "¿Te ayudo con una reserva, la carta o los horarios y sucursales?")
+        return {"intencion": "saludo_despedida", "datos_extraidos": dict(self.slots), "respuesta": respuesta,
+                "estado": self.estado, "hechos": [], "intencion_clasificador": "negacion", "confianza": 1.0}
+
+    def _recordatorio(self, intencion, t):
+        if self.intencion_activa == "hacer_reserva":
+            faltan = [c for c in config.CAMPOS_RESERVA if not self.slots.get(c)]
+            cuerpo = f"para completar la reserva me falta {enumerar(NOMBRE_CAMPO[c] for c in faltan)}."
+        elif self.intencion_activa == "cancelar_reserva":
+            faltan = [NOMBRE_CAMPO[c] for c in config.CAMPOS_CANCELACION if not self.slots.get(c)]
+            cuerpo = "para cancelar la reserva necesito " + enumerar(faltan) + "."
+        else:
+            cuerpo = "¿qué quieres cambiar de tu reserva?"
+        if re.fullmatch(r"\W*((n+o+)+|no es asi|esta mal|eso no)\W*", t):
+            return ("Entendido. Si algún dato quedó mal, escríbeme el correcto (por ejemplo \"a nombre de Ana\" "
+                    "o \"sucursal Ñuñoa\") y lo reemplazo. " + cuerpo[0].upper() + cuerpo[1:])
+        if intencion == "saludo_despedida" and re.search(r"gracias|chao|adios|nos vemos|hasta luego", t):
+            return "¡De nada! Antes de irte, " + cuerpo
+        return "Seguimos con tu solicitud: " + cuerpo
+
     def _registrar(self, tipo, texto):
         self.solicitudes.append({"tipo": tipo, **self.slots})
         self.ultima_reserva = dict(self.slots) if tipo != "cancelacion" else None
@@ -238,5 +335,7 @@ class Asistente:
         if intencion == "saludo_despedida":
             if re.search(r"gracias|chao|adios|nos vemos|hasta luego|que estes bien", t):
                 return f"¡Gracias a ti! Te esperamos en {kb.NOMBRE_LOCAL}."
+            if re.search(r"\b(rico|bueno|buenisimo|genial|excelente|perfecto|bacan|wena onda)\b", t):
+                return "¡Qué bueno que te guste! ¿Te ayudo con una reserva o quieres saber algo más?"
             return f"¡Hola! Bienvenido/a a {kb.NOMBRE_LOCAL}. Puedo ayudarte con reservas, la carta, horarios y sucursales."
         return "Disculpa, solo puedo ayudarte con temas del restaurante: reservas, la carta, horarios y sucursales."

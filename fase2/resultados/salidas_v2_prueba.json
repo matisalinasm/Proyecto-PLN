@@ -13,7 +13,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.88
+  "confianza": 0.95
  },
  "2": {
   "intencion": "hacer_reserva",
@@ -29,7 +29,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.59
+  "confianza": 0.44
  },
  "3": {
   "intencion": "hacer_reserva",
@@ -45,7 +45,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.68
+  "confianza": 0.62
  },
  "4": {
   "intencion": "hacer_reserva",
@@ -61,7 +61,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.78
+  "confianza": 0.77
  },
  "5": {
   "intencion": "hacer_reserva",
@@ -77,7 +77,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.43
+  "confianza": 0.4
  },
  "6": {
   "intencion": "hacer_reserva",
@@ -93,7 +93,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.35
+  "confianza": 0.33
  },
  "7": {
   "intencion": "hacer_reserva",
@@ -109,7 +109,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.61
+  "confianza": 0.58
  },
  "8": {
   "intencion": "hacer_reserva",
@@ -125,7 +125,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.89
+  "confianza": 0.93
  },
  "9": {
   "intencion": "hacer_reserva",
@@ -141,7 +141,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.6
+  "confianza": 0.67
  },
  "10": {
   "intencion": "hacer_reserva",
@@ -157,7 +157,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.77
+  "confianza": 0.68
  },
  "11": {
   "intencion": "modificar_reserva",
@@ -173,7 +173,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.7
+  "confianza": 0.65
  },
  "12": {
   "intencion": "modificar_reserva",
@@ -189,7 +189,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.79
+  "confianza": 0.88
  },
  "13": {
   "intencion": "modificar_reserva",
@@ -205,7 +205,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.83
+  "confianza": 0.85
  },
  "14": {
   "intencion": "modificar_reserva",
@@ -221,7 +221,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.85
+  "confianza": 0.83
  },
  "15": {
   "intencion": "modificar_reserva",
@@ -237,10 +237,10 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.52
+  "confianza": 0.5
  },
  "16": {
-  "intencion": "modificar_reserva",
+  "intencion": "cancelar_reserva",
   "datos_extraidos": {
    "fecha": "mañana",
    "hora": null,
@@ -249,11 +249,11 @@
    "sucursal": "Ñuñoa",
    "restriccion_alimentaria": null
   },
-  "respuesta": "Registré tu solicitud de modificación: mañana, sucursal Ñuñoa, a nombre de Camila.",
+  "respuesta": "Registré tu solicitud de cancelación: mañana, sucursal Ñuñoa, a nombre de Camila.",
   "estado": "REGISTRADA",
   "hechos": [],
-  "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.49
+  "intencion_clasificador": "cancelar_reserva",
+  "confianza": 0.45
  },
  "17": {
   "intencion": "cancelar_reserva",
@@ -269,7 +269,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "cancelar_reserva",
-  "confianza": 0.93
+  "confianza": 0.9
  },
  "18": {
   "intencion": "hacer_reserva",
@@ -285,7 +285,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.69
+  "confianza": 0.82
  },
  "19": {
   "intencion": "modificar_reserva",
@@ -301,7 +301,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "modificar_reserva",
-  "confianza": 0.42
+  "confianza": 0.41
  },
  "20": {
   "intencion": "cancelar_reserva",
@@ -317,7 +317,7 @@
   "estado": "REGISTRADA",
   "hechos": [],
   "intencion_clasificador": "cancelar_reserva",
-  "confianza": 0.73
+  "confianza": 0.71
  },
  "21": {
   "intencion": "consultar_menu",
@@ -328,7 +328,7 @@
    "carta"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.94
+  "confianza": 0.98
  },
  "22": {
   "intencion": "consultar_menu",
@@ -340,7 +340,7 @@
    "plato_empanada"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.67
+  "confianza": 0.72
  },
  "23": {
   "intencion": "consultar_menu",
@@ -353,7 +353,7 @@
    "plato_ensalada"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.94
+  "confianza": 0.96
  },
  "24": {
   "intencion": "consultar_menu",
@@ -364,7 +364,7 @@
    "plato_mote"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.8
+  "confianza": 0.82
  },
  "25": {
   "intencion": "consultar_menu",
@@ -376,7 +376,7 @@
    "plato_churrasco"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.9
+  "confianza": 0.91
  },
  "26": {
   "intencion": "consultar_info_local",
@@ -389,7 +389,7 @@
    "sucursal_providencia"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.91
+  "confianza": 0.92
  },
  "27": {
   "intencion": "consultar_info_local",
@@ -402,7 +402,7 @@
    "sucursal_nunoa"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.45
+  "confianza": 0.51
  },
  "28": {
   "intencion": "consultar_info_local",
@@ -413,7 +413,7 @@
    "horario"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.69
+  "confianza": 0.77
  },
  "29": {
   "intencion": "consultar_info_local",
@@ -437,7 +437,7 @@
    "politica_reservas"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.7
+  "confianza": 0.65
  },
  "31": {
   "intencion": "saludo_despedida",
@@ -455,7 +455,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "saludo_despedida",
-  "confianza": 0.86
+  "confianza": 0.85
  },
  "33": {
   "intencion": "fuera_de_dominio",
@@ -464,7 +464,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.32
+  "confianza": 0.37
  },
  "34": {
   "intencion": "fuera_de_dominio",
@@ -473,7 +473,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.46
+  "confianza": 0.49
  },
  "35": {
   "intencion": "fuera_de_dominio",
@@ -484,7 +484,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "fuera_de_dominio",
-  "confianza": 0.68
+  "confianza": 0.65
  },
  "36": {
   "intencion": "consultar_menu",
@@ -522,7 +522,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.47
+  "confianza": 0.51
  },
  "39": {
   "intencion": "consultar_info_local",
@@ -534,7 +534,7 @@
    "sucursal_nunoa"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.56
+  "confianza": 0.6
  },
  "40": {
   "intencion": "consultar_info_local",
@@ -543,7 +543,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.87
+  "confianza": 0.88
  },
  "41": {
   "intencion": "consultar_info_local",
@@ -552,7 +552,7 @@
   "estado": "INICIO",
   "hechos": [],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.84
+  "confianza": 0.87
  },
  "42": {
   "intencion": "consultar_info_local",
@@ -587,7 +587,7 @@
    "sucursal_nunoa"
   ],
   "intencion_clasificador": "consultar_info_local",
-  "confianza": 0.77
+  "confianza": 0.85
  },
  "45": {
   "intencion": "consultar_menu",
@@ -599,7 +599,7 @@
    "horario"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.34
+  "confianza": 0.55
  },
  "46": {
   "intencion": "hacer_reserva",
@@ -615,7 +615,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.87
+  "confianza": 0.83
  },
  "47": {
   "intencion": "hacer_reserva",
@@ -631,7 +631,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.74
+  "confianza": 0.77
  },
  "48": {
   "intencion": "hacer_reserva",
@@ -647,7 +647,7 @@
   "estado": "RECOLECTANDO",
   "hechos": [],
   "intencion_clasificador": "hacer_reserva",
-  "confianza": 0.93
+  "confianza": 0.95
  },
  "49": {
   "intencion": "consultar_menu",
@@ -661,7 +661,7 @@
    "plato_mote"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.75
+  "confianza": 0.82
  },
  "50": {
   "intencion": "consultar_menu",
@@ -672,6 +672,6 @@
    "carta"
   ],
   "intencion_clasificador": "consultar_menu",
-  "confianza": 0.82
+  "confianza": 0.89
  }
 }

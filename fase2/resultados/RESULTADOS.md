@@ -4,24 +4,24 @@ Generado por `python experimentos.py`. Las salidas de la V1 sobre las 50 convers
 
 ## E1 · Intención (Clases 02, 06, 08)
 
-Cada modelo clasifica el primer mensaje de cada conversación. `CV` = F1-macro con validación cruzada de 5 particiones sobre el corpus de entrenamiento (150 frases): **es el criterio para elegir el modelo**, porque no mira los datos de prueba. Las reglas no se entrenan: su CV es su desempeño directo sobre el corpus.
+Cada modelo clasifica el primer mensaje de cada conversación. `CV` = F1-macro con validación cruzada de 5 particiones sobre el corpus de entrenamiento (179 frases): **es el criterio para elegir el modelo**, porque no mira los datos de prueba. Las reglas no se entrenan: su CV es su desempeño directo sobre el corpus.
 
 | Modelo | CV F1 | Prueba acc | Prueba F1 | Holdout acc | Holdout F1 |
 |---|---|---|---|---|---|
-| reglas | 0.80 | 100% | 1.00 | 48% | 0.47 |
-| bow_nb | 0.58 | 82% | 0.77 | 80% | 0.74 |
-| tfidf_lr | 0.58 | 90% | 0.86 | 72% | 0.64 |
-| tfidf_stem_lr | 0.65 | 94% | 0.91 | 80% | 0.70 |
-| tfidf_lema_lr | 0.57 | 90% | 0.85 | 72% | 0.64 |
-| tfidf_char_lr | 0.61 | 88% | 0.84 | 84% | 0.82 |
-| tfidf_knn | 0.54 | 84% | 0.84 | 68% | 0.62 |
-| lsa_lr | 0.62 | 84% | 0.79 | 68% | 0.62 |
-| emb_lr | 0.68 | 84% | 0.78 | 68% | 0.69 |
-| emb_knn | 0.57 | 52% | 0.48 | 60% | 0.52 |
-| hibrido_lr | 0.72 | 94% | 0.91 | 88% | 0.85 |
+| reglas | 0.81 | 100% | 1.00 | 48% | 0.47 |
+| bow_nb | 0.55 | 84% | 0.79 | 84% | 0.78 |
+| tfidf_lr | 0.60 | 94% | 0.93 | 72% | 0.64 |
+| tfidf_stem_lr | 0.68 | 94% | 0.93 | 76% | 0.68 |
+| tfidf_lema_lr | 0.64 | 88% | 0.84 | 64% | 0.57 |
+| tfidf_char_lr | 0.63 | 88% | 0.87 | 76% | 0.74 |
+| tfidf_knn | 0.61 | 86% | 0.85 | 64% | 0.55 |
+| lsa_lr | 0.60 | 86% | 0.81 | 72% | 0.66 |
+| emb_lr | 0.64 | 84% | 0.77 | 64% | 0.65 |
+| emb_knn | 0.53 | 54% | 0.50 | 56% | 0.54 |
+| hibrido_lr | 0.70 | 96% | 0.95 | 92% | 0.92 |
 | **LLM V1 (gemma3:4b)** | — | 92% | 0.90 | 80% | 0.73 |
 
-Errores del modelo elegido (`hibrido_lr`): prueba: #16 cancelar_reserva→modificar_reserva, #18 cancelar_reserva→hacer_reserva, #19 cancelar_reserva→modificar_reserva; holdout: #110 cancelar_reserva→saludo_despedida, #118 consultar_info_local→fuera_de_dominio, #125 fuera_de_dominio→consultar_info_local
+Errores del modelo elegido (`hibrido_lr`): prueba: #18 cancelar_reserva→hacer_reserva, #19 cancelar_reserva→modificar_reserva; holdout: #118 consultar_info_local→fuera_de_dominio, #125 fuera_de_dominio→consultar_info_local
 
 ## E2 · Extracción de datos (Clases 04, 05, 06)
 
@@ -52,7 +52,7 @@ F1 por campo después de normalizar valores ('este domingo' = 'domingo', '14:00 
 
 | Conjunto | Sistema | Intención final | F1 datos | Completas |
 |---|---|---|---|---|
-| multiturno (desarrollo) | sin estado (cada turno aislado) | 17% | 0.45 | 2/12 |
+| multiturno (desarrollo) | sin estado (cada turno aislado) | 25% | 0.52 | 3/12 |
 | multiturno (desarrollo) | autómata + discurso (V2) | 92% | 1.00 | 11/12 |
 | multiturno (desarrollo) | LLM V1 (historial) | 92% | 0.76 | 7/12 |
 | multiturno (desarrollo) | LLM V1b (historial) | 75% | 0.91 | 8/12 |
@@ -109,7 +109,7 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 |---|---|---|---|---|---|---|---|---|---|
 | prueba | LLM V1 (cruda) | 92% | 0.90 | 0.95 | 7 | 7 | 5 | 6 | 0 |
 | prueba | LLM V1b (prompt mejorado) | 92% | 0.91 | 0.97 | 0 | 4 | 1 | 20 | 0 |
-| prueba | V2 (sin LLM) | 92% | 0.90 | 0.99 | 0 | 0 | 1 | 0 | 0 |
+| prueba | V2 (sin LLM) | 94% | 0.93 | 0.99 | 0 | 0 | 1 | 0 | 0 |
 | holdout | LLM V1 (cruda) | 80% | 0.73 | 0.97 | 4 | 4 | 2 | 5 | 0 |
 | holdout | LLM V1b (prompt mejorado) | 92% | 0.91 | 1.00 | 0 | 2 | 0 | 8 | 0 |
 | holdout | V2 (sin LLM) | 92% | 0.92 | 1.00 | 0 | 0 | 0 | 0 | 0 |
@@ -125,7 +125,7 @@ Intención y datos del último turno de cada conversación. Respuestas inventada
 
 | Sistema | Latencia media por turno | p95 | Modelo |
 |---|---|---|---|
-| V2 (sin LLM) | 15 ms | 25 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
+| V2 (sin LLM) | 13 ms | 24 ms | spaCy es_core_news_md (~50 MB en disco) + TF-IDF |
 | LLM V1 (holdout) | 2.0 s | 6.4 s | gemma3:4b cuantizado (GGUF 4 bits en Ollama) |
 | LLM V1B (holdout) | 1.0 s | 1.1 s | gemma3:4b cuantizado (GGUF 4 bits en Ollama) |
 
@@ -137,8 +137,8 @@ Se cambia UNA pieza a la vez. Holdout y ciegas no se usaron para diseñar; multi
 |---|---|---|---|---|---|
 | V2 completa | 92% | 1.00 | 92% | 1.00 | 87% |
 | clasificador → reglas | 48% | 0.95 | 100% | 1.00 | 47% |
-| clasificador → TF-IDF char | 88% | 1.00 | 100% | 1.00 | 80% |
-| clasificador → embeddings | 76% | 1.00 | 67% | 0.94 | 73% |
+| clasificador → TF-IDF char | 76% | 1.00 | 100% | 1.00 | 73% |
+| clasificador → embeddings | 72% | 1.00 | 75% | 1.00 | 80% |
 | extractor → solo regex | 92% | 1.00 | 92% | 1.00 | 87% |
-| extractor → solo NER spaCy | 92% | 0.97 | 67% | 0.81 | 87% |
-| sin seguimiento de diálogo | 84% | 0.95 | 17% | 0.45 | 87% |
+| extractor → solo NER spaCy | 92% | 0.97 | 75% | 0.94 | 87% |
+| sin seguimiento de diálogo | 84% | 0.95 | 25% | 0.52 | 87% |

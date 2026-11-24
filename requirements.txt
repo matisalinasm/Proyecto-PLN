@@ -3,4 +3,5 @@ scikit-learn
 spacy>=3.7
 nltk
 numpy
+gradio   # solo para fase2/interfaz_chat.py
 # Modelo de spaCy en español (Fase 2):  python -m spacy download es_core_news_md

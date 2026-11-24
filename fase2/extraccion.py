@@ -43,8 +43,15 @@ RESTRICCIONES = {"sin gluten": ["celiac", "sin gluten", "gluten"], "vegano": ["v
                  "para diabéticos": ["diabetic", "sin azucar"]}
 
 _NOMBRE = r"([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?)"
+# Tras un disparador fuerte ("a nombre de", "me llamo") el nombre puede venir en minúscula ("a nombre de marty"):
+# el contexto ya dice que lo que sigue es un nombre. Con "soy" se exige mayúscula ("soy vegano" no es un nombre).
+_NOMBRE_MIN = r"([a-záéíóúñü]{2,}(?:\s+(?!y\b|para\b|en\b|el\b|la\b|a\b|de\b|por\b)[a-záéíóúñü]{2,})?)"
 _PATRONES_NOMBRE = [r"(?i:a nombre de)\s+" + _NOMBRE, r"(?i:mi nombre es|me llamo)\s+" + _NOMBRE,
+                    r"(?i:a nombre de|mi nombre es|me llamo)\s+" + _NOMBRE_MIN,
                     r"\b(?i:soy)\s+" + _NOMBRE, r"(?i:la reserva de)\s+" + _NOMBRE]
+# Palabras que el NER a veces etiqueta como persona: negaciones/afirmaciones alargadas ("nono", "noooo",
+# "siii") y abreviaturas de sucursal ("Provi").
+_NO_ES_NOMBRE = re.compile(r"(n+o+)+|s+i+|ok+|ya+|provi[a-z]*|nunoa")
 _SALUDOS = {"hola", "wena", "buenas", "buenos", "gracias", "oye", "ya", "ok", "perdon"}
 
 
@@ -136,20 +143,28 @@ def nombre_regex(texto: str):
     encontrado = None
     for patron in _PATRONES_NOMBRE:
         for m in re.finditer(patron, texto):
-            encontrado = m.group(1)
-    return encontrado
+            if normalizar(m.group(1).split()[0]) not in _SALUDOS:
+                encontrado = m.group(1)
+    return encontrado.title() if encontrado and encontrado.islower() else encontrado
 
 
 def nombre_ner(texto: str):
-    """Entidad PER de spaCy (se descartan saludos que el modelo confunde con nombres)."""
+    """Entidad PER de spaCy. El NER estadístico a veces etiqueta como persona palabras que no lo son
+    ("hola", o un "horrrrass" mal escrito, según la versión del modelo). Por eso solo se acepta si
+    parece un nombre propio escrito como tal: empieza con mayúscula y no es un saludo."""
     personas = [e.text for e in analizar(texto).ents
-                if e.label_ == "PER" and normalizar(e.text.split()[0]) not in _SALUDOS]
+                if e.label_ == "PER" and e.text[:1].isupper()
+                and normalizar(e.text.split()[0]) not in _SALUDOS
+                and not _NO_ES_NOMBRE.fullmatch(normalizar(e.text.split()[0]))]
     return personas[-1] if personas else None
 
 
 def sucursal_regex(t: str):
-    m = _ultima(r"\b(nueva providencia|providencia|nunoa|irarrazaval)\b", t)
-    return SUCURSALES_ALIAS[m.group(1)] if m else None
+    # También abreviaturas y errores de tipeo comunes: "provi", "provide", "providecia", "nuñoa" sin tilde.
+    m = _ultima(r"\b(nueva providencia|provi[a-z]*|nunoa|nunoha|irarrazaval)\b", t)
+    if not m:
+        return None
+    return "Providencia" if m.group(1).startswith("provi") else SUCURSALES_ALIAS[m.group(1)]
 
 
 def sucursal_ner(texto: str):
